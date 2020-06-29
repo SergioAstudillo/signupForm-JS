@@ -1,0 +1,101 @@
+//Import variables.
+@import "./var";
+@import "./fonts";
+
+body{
+    background: $background;
+}
+
+.frame{
+    background: $frameColor;
+    margin: 2rem;
+    font-family: Montserrat;
+    //box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    //Sign Up:
+    .frame__title{
+        color: $labelColor;
+        text-align: center;
+        padding-top: 2rem;
+        text-transform: uppercase;
+        text-decoration-line: underline;
+        font-size: 2.5rem;
+    }
+
+    //Input Labels:
+    .frame__email--label, .frame__password--label{
+        color: $labelColor;
+        text-transform: uppercase;
+        text-decoration-line: underline;
+        font-size: 1.5rem;
+        cursor: default;
+        margin-bottom: 1rem;
+    }
+
+    //Inputs:
+    .frame__email--input, .frame__password--input{
+        background: $inputColor;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 2rem;
+        border: 0.1rem solid $labelColor;
+        border-radius: 0.5rem;
+        &:focus{
+            outline-width: 1rem;
+            outline-color: $labelColor;
+            box-shadow: 0rem 0rem 0.5rem rgba($color: $labelColor, $alpha: 1);
+
+        }
+        &::placeholder{
+            padding-left: 0.5rem;
+        }
+    }
+
+    //Validation:
+    .frame__validation{
+        color: $labelColor;
+        font-size: 0.9rem;
+        line-height: 0rem;
+        margin: 0;
+        margin-left: 2rem;
+        margin-top: 0.8rem;
+        text-transform: uppercase;
+        cursor: default;
+        &::before{
+            content: '';
+            display: inline-flex;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 1rem;
+            background-color: $inputColor;
+            margin-right: 0.2rem;
+            border: 0.1rem solid $labelColor;
+
+        }
+        &:last-of-type{
+            padding-bottom: 0rem;
+        }
+    }
+
+    .frame__validation--email{
+        @extend .frame__validation;
+        &::before{
+            display: none;
+        }
+    }
+
+    //Submit button:
+    .frame__button{
+        width: 50%;
+        border: 0.1rem solid $labelColor;
+        background: $inputColor;
+        color: $labelColor;
+        &:hover, &:focus{
+            cursor: pointer;
+            box-shadow: 0rem 0rem 1rem rgba($color: $labelColor, $alpha: 0.5);
+            outline-width: 1rem;
+            outline-color: $labelColor;
+        }
+    }
+}
