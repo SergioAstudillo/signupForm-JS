@@ -1,101 +1,134 @@
 //Import variables.
 @import "./var";
 @import "./fonts";
+@import "./functions";
 
-body{
-    background: $background;
+html{
+    min-height: 100%;
 }
 
-.frame{
-    background: $frameColor;
-    margin: 2rem;
+body {
+    height: 100%;
+    background: #2980b9;
+     /* fallback for old browsers */
+    background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
+
     font-family: Montserrat;
-    //box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.25);
-    border-radius: 1rem;
-    //Sign Up:
-    .frame__title{
-        color: $labelColor;
+    //overflow: hidden;
+    text-transform: uppercase;
+}
+
+.form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+    background: $formColor;
+    border: 0.25rem solid $labelColor;
+    width: 50vw;
+    margin-top: 25vh;
+    display: flex;
+    //align-items: flex-start;
+    flex-flow: column nowrap;
+    border-radius: 1.835rem;
+    box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
+
+    .form__title{
+        display: block;
         text-align: center;
-        padding-top: 2rem;
-        text-transform: uppercase;
-        text-decoration-line: underline;
-        font-size: 2.5rem;
-    }
-
-    //Input Labels:
-    .frame__email--label, .frame__password--label{
-        color: $labelColor;
-        text-transform: uppercase;
-        text-decoration-line: underline;
-        font-size: 1.5rem;
-        cursor: default;
-        margin-bottom: 1rem;
-    }
-
-    //Inputs:
-    .frame__email--input, .frame__password--input{
-        background: $inputColor;
-        width: 100%;
-        margin-top: 0;
+        margin-top: 1.875rem;
         margin-bottom: 0;
-        height: 2rem;
-        border: 0.1rem solid $labelColor;
-        border-radius: 0.5rem;
-        &:focus{
-            outline-width: 1rem;
-            outline-color: $labelColor;
-            box-shadow: 0rem 0rem 0.5rem rgba($color: $labelColor, $alpha: 1);
+        font-size: 2.5rem;
+        color: $labelColor;
+        text-decoration: underline;
+    }
 
-        }
+    .form__inputLabel{
+        /*TODO: Media Query para que centre todo en móviles.
+        Evitar también que se salgan del cuadrado con la resolución mínima.
+        */
+        display: flex;
+        font-size: 1.25rem;
+        margin-left: 1rem;
+        color: $labelColor;
+        margin-bottom: 0.2rem;
+        justify-content: flex-start;
+    }
+
+    .form__input--container{
+        //TODO: Arreglar el margen derecho, tiene un poco de más.
+        margin: 0 1rem;
+        display: block;
+    }
+
+    .form__input{
+        width: 96.5%;
+        padding: 0.313rem 0;
+        border: 0.188rem solid $labelColor;
+        border-radius: 0.8rem;
+        //background: $inputColor;
         &::placeholder{
-            padding-left: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            padding-left: 0.7rem;
+            color: $labelColor;
         }
     }
-
-    //Validation:
-    .frame__validation{
+    
+    .form__validation--first{
+        margin-top: 1rem;
+        margin-bottom: 0;
+        @include circleBefore(inline-flex);
         color: $labelColor;
-        font-size: 0.9rem;
-        line-height: 0rem;
+        font-size: 0.875rem;
+    }
+
+    .form__validation--fourth{
+        @extend .form__validation--first;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        @include circleBefore(inline-flex);
+    }
+
+    .form__validation{
+        @extend .form__validation--first;
         margin: 0;
-        margin-left: 2rem;
-        margin-top: 0.8rem;
-        text-transform: uppercase;
-        cursor: default;
-        &::before{
-            content: '';
-            display: inline-flex;
-            width: 0.8rem;
-            height: 0.8rem;
-            border-radius: 1rem;
-            background-color: $inputColor;
-            margin-right: 0.2rem;
-            border: 0.1rem solid $labelColor;
-
-        }
-        &:last-of-type{
-            padding-bottom: 0rem;
-        }
+        @include circleBefore(inline-flex);
+    }
+    
+    .form__validation--noCircle{
+        @extend .form__validation--first;
+        @include circleBefore(none);
+        margin-left: 1rem;
+        font-size: 0.875rem;
     }
 
-    .frame__validation--email{
-        @extend .frame__validation;
-        &::before{
-            display: none;
-        }
-    }
-
-    //Submit button:
-    .frame__button{
-        width: 50%;
-        border: 0.1rem solid $labelColor;
-        background: $inputColor;
-        color: $labelColor;
-        &:hover, &:focus{
-            cursor: pointer;
-            box-shadow: 0rem 0rem 1rem rgba($color: $labelColor, $alpha: 0.5);
-            outline-width: 1rem;
-            outline-color: $labelColor;
+    .button{
+        align-self: center;
+        justify-self: center;
+        flex-flow: row wrap;
+        .form__submitButton{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row wrap;
+            height: 3.125rem;
+            width: 12.5rem;
+            margin-bottom: 1rem;
+            border-radius: 1.5rem;
+            border: 0.188rem solid $labelColor;
+            border-style: solid;
+            &:hover{
+                cursor: pointer;
+                //TODO: Hacer el botón responsive.
+                /*box-shadow: 0 0 1rem #505050e0;
+                transition: box-shadow ease-in-out 1s;*/
+            }
         }
     }
 }

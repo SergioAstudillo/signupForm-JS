@@ -1,0 +1,14 @@
+@mixin circleBefore($visibility) {
+    &::before{
+        display: $visibility;
+        flex-flow: row;
+        content: '';
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 1rem;
+        background-color: $inputColor;
+        margin-right: 0.3rem;
+        border: 0.1rem solid $labelColor;
+        margin-left: 1rem;
+    }
+}
