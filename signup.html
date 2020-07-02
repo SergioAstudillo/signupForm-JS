@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp-Form</title>
     <link rel="stylesheet" href="/css/normalize.css">
-    <!--<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">!-->
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/3bea985cf6.js" crossorigin="anonymous"></script>
      <!-- Import Personal favicons -->
@@ -25,13 +24,19 @@
 
             <p class="form__inputLabel">EMAIL ADDRESS</p>
             <div class="input form__input--container">
-                <input type="text" data-role="input" class="form__input" placeholder="Email@domain.com" style="background-color: #E0E0E0E0;">
+                <input type="text" id="inputEmail" class="form__input" placeholder="Email@domain.com">
+            <span class="clearContainer">
+                <i class="fas fa-times" id="clear" onclick="clearButton();"></i>
+            </span>
             </div>
             <p class="form__validation--noCircle">The email is already in use.</p>
 
             <p class="form__inputLabel">PASSWORD</p>
             <div class="input form__input--container">
-                <input type="password" data-role="input" class="form__input" placeholder="Password" style="background-color: #E0E0E0E0;">
+                <input type="password" id="inputPassword" class="form__input" placeholder="Password" maxlength="30">
+                <span class="eyeContainer">
+                    <i class="far fa-eye" id="eye-show" onclick="eyeButton();"></i>
+                </span>
             </div>
 
             <p class="form__validation--first">At least 8 characters in the password field.</p>
@@ -39,11 +44,14 @@
             <p class="form__validation">At least use 1 capital letter and 1 lower case letter.</p>
             <p class="form__validation--fourth">Include at least 1 symbol (ex: ! , . - + _ ?)</p>
             
-            <div class="button form__submitButton"><button type="submit" class="form__submitButton">Create account</button></div>
+            <div class="button form__submitButton"><button type="button" class="form__submitButton" onclick="test();">Create account</button></div>
         
         </form>
 
     </div>
-    <!--<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>!-->
+    <script src="/js/alerts.js"></script>
+    <script src="/js/dom.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </body>
 </html>

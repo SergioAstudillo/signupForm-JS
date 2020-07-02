@@ -20,6 +20,8 @@ body {
     text-transform: uppercase;
 }
 
+
+
 .form__container {
     display: flex;
     justify-content: center;
@@ -61,22 +63,53 @@ body {
     }
 
     .form__input--container{
-        //TODO: Arreglar el margen derecho, tiene un poco de más.
         margin: 0 1rem;
+        margin-right: 1.35rem;
         display: block;
+        position: relative;
     }
 
     .form__input{
-        width: 96.5%;
+        width: 100%;
         padding: 0.313rem 0;
         border: 0.188rem solid $labelColor;
         border-radius: 0.8rem;
-        //background: $inputColor;
+        transition: box-shadow ease-in-out 0.5s;
+        display: inline-flex;
+        background: $inputColor;
         &::placeholder{
             text-transform: uppercase;
             font-size: 0.875rem;
             padding-left: 0.7rem;
             color: $labelColor;
+        }
+        &:hover, &:focus{
+            box-shadow: 0 0 1rem #505050a2;
+        }
+    }
+
+    //Eye button.
+    .eyeContainer{
+        cursor: pointer;
+        position: absolute;
+        right: 0.5%;
+        top: 13%;
+        .fa-eye{
+            color: $labelColor;
+            font-size: 1.5rem;
+        }
+    }
+
+    //Clear button.
+    .clearContainer{
+        cursor: pointer;
+        position: absolute;
+        right: 0.9%;
+        top: 15%;
+        .fa-times{
+            display: none;
+            color: $labelColor;
+            font-size: 1.5rem;
         }
     }
     
@@ -109,9 +142,9 @@ body {
     }
 
     .button{
+        display: flex;
         align-self: center;
         justify-self: center;
-        flex-flow: row wrap;
         .form__submitButton{
             display: flex;
             justify-content: center;
@@ -123,11 +156,13 @@ body {
             border-radius: 1.5rem;
             border: 0.188rem solid $labelColor;
             border-style: solid;
+            transition: box-shadow ease-in-out 0.5s;
+            text-transform: uppercase;
+            color: $labelColor;
             &:hover{
                 cursor: pointer;
                 //TODO: Hacer el botón responsive.
-                /*box-shadow: 0 0 1rem #505050e0;
-                transition: box-shadow ease-in-out 1s;*/
+                box-shadow: 0 0 1rem #505050a2;
             }
         }
     }
