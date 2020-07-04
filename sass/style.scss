@@ -98,6 +98,10 @@ body {
             color: $labelColor;
             font-size: 1.5rem;
         }
+        .fa-eye-slash{
+            display: none;
+            @extend .fa-eye;
+        }
     }
 
     //Clear button.
