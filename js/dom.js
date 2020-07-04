@@ -1,21 +1,22 @@
-//TODO: Conseguir que el focusout funcione, de momento no deja hacer click al botón
-//Display the clear button and make it work.
+//Displays and hides the clear button depending on the focus.
 let input = document.querySelector('#inputEmail');
 
-input.addEventListener('focus', function () {
+input.addEventListener('focus', () => {
     document.querySelector('#clear').style.display = 'block';
 });
 
-input.addEventListener('focusout', function () {
-    document.querySelector('#clear').style.display = 'none';
+input.addEventListener('focusout', () => {
+    setTimeout(() => {
+        document.querySelector('#clear').style.display = 'none';
+    }, 500);
 });
 
-//Input clear with button.
+//Clear the email input when you press the button.
 function clearButton() {
     input.value = '';
 }
 
-//Password hide/show button.
+//Password dynamic hide/show button.
 var defaultState = true;
 function eyeButton() {
     if (defaultState) {
