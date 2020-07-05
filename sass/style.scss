@@ -145,10 +145,11 @@ body {
         font-size: 0.875rem;
     }
 
-    .button{
+    .form__submitButton--container{
         display: flex;
         align-self: center;
-        justify-self: center;
+        justify-content: center;
+        width: 100%;
         .form__submitButton{
             display: flex;
             justify-content: center;
@@ -165,7 +166,6 @@ body {
             color: $labelColor;
             &:hover{
                 cursor: pointer;
-                //TODO: Hacer el botón responsive.
                 box-shadow: 0 0 1rem #505050a2;
             }
         }
