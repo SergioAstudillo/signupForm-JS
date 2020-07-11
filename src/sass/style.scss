@@ -14,12 +14,9 @@ body {
     background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
     // Chrome 10-25, Safari 5.1-6.
     background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
-
     font-family: Montserrat;
     text-transform: uppercase;
 }
-
-
 
 .form__container {
     display: flex;
@@ -131,15 +128,21 @@ body {
         @include circleBefore(inline-flex, $inputColor);
     }
 
-    .form__validation{
+    .form__validation--second{
         @extend .form__validation--first;
         margin: 0;
+        @include circleBefore(inline-flex, $inputColor);
+    }
+
+    .form__validation--third{
+        @extend .form__validation--second;
         @include circleBefore(inline-flex, $inputColor);
     }
     
     .form__validation--noCircle{
         @extend .form__validation--first;
         @include circleBefore(none, $inputColor);
+        display: none;
         margin-left: 1rem;
         font-size: 0.875rem;
         margin-top: 0.75rem;
@@ -174,9 +177,19 @@ body {
         }
     }
 
-    /* Additional classes to add with JS */
+    /* Additional classes to add with JS for dynamic validation. */
     .form__validation--greenCircle--first{
         @extend .form__validation--first;
+        @include circleBefore(inline-flex, $validatedButton);
+    }
+
+    .form__validation--greenCircle--second{
+        @extend .form__validation--second;
+        @include circleBefore(inline-flex, $validatedButton);
+    }
+
+    .form__validation--greenCircle--third{
+        @extend .form__validation--third;
         @include circleBefore(inline-flex, $validatedButton);
     }
 
@@ -185,8 +198,5 @@ body {
         @include circleBefore(inline-flex, $validatedButton);
     }
 
-    .form__validation--greenCircle{
-        @extend .form__validation;
-        @include circleBefore(inline-flex, $validatedButton);
-    }
+
 }

@@ -1,5 +1,5 @@
-//Displays and hides the clear button depending on the focus.
-let input = document.querySelector('#inputEmail');
+/* Displays and hides the clear button depending on the focus */
+const input = document.querySelector('#inputEmail');
 
 input.addEventListener('focus', () => {
     document.querySelector('#clear').style.display = 'block';
@@ -16,8 +16,9 @@ function clearButton() {
     input.value = '';
 }
 
-//Password dynamic hide/show button.
+/* Password dynamic hide/show button. */
 var defaultState = true;
+
 function eyeButton() {
     if (defaultState) {
         document.getElementById('inputPassword').setAttribute('type', 'text');
