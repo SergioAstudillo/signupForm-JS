@@ -9,14 +9,13 @@ html{
 
 body {
     height: 100%;
-    background: #2980b9;
-     /* fallback for old browsers */
+    background: $background;
+    // Fallback for old browsers.
     background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
-    /* Chrome 10-25, Safari 5.1-6 */
+    // Chrome 10-25, Safari 5.1-6.
     background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
 
     font-family: Montserrat;
-    //overflow: hidden;
     text-transform: uppercase;
 }
 
@@ -35,7 +34,6 @@ body {
     width: 50vw;
     margin-top: 25vh;
     display: flex;
-    //align-items: flex-start;
     flex-flow: column nowrap;
     border-radius: 1.835rem;
     box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
@@ -51,9 +49,6 @@ body {
     }
 
     .form__inputLabel{
-        /*TODO: Media Query para que centre todo en móviles.
-        Evitar también que se salgan del cuadrado con la resolución mínima.
-        */
         display: flex;
         font-size: 1.25rem;
         margin-left: 1rem;
@@ -85,7 +80,7 @@ body {
             color: $labelColor;
         }
         &:hover, &:focus{
-            box-shadow: 0 0 1rem #505050a2;
+            box-shadow: 0 0 1rem $hoverShadow;
         }
     }
 
@@ -124,6 +119,9 @@ body {
         @include circleBefore(inline-flex);
         color: $labelColor;
         font-size: 0.875rem;
+        //Text indent from the second line for better UI in mobile devices.
+        padding-left: 1.5rem;
+        text-indent:-1.5rem;
     }
 
     .form__validation--fourth{
@@ -144,6 +142,10 @@ body {
         @include circleBefore(none);
         margin-left: 1rem;
         font-size: 0.875rem;
+        margin-top: 0.75rem;
+        //Deny the extended indent.
+        padding-left: 0;
+        text-indent: 0;
     }
 
     .form__submitButton--container{
@@ -167,7 +169,7 @@ body {
             color: $labelColor;
             &:hover{
                 cursor: pointer;
-                box-shadow: 0 0 1rem #505050a2;
+                box-shadow: 0 0 1rem $hoverShadow;
             }
         }
     }
