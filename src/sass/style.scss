@@ -116,7 +116,7 @@ body {
     .form__validation--first{
         margin-top: 1rem;
         margin-bottom: 0;
-        @include circleBefore(inline-flex);
+        @include circleBefore(inline-flex, $inputColor);
         color: $labelColor;
         font-size: 0.875rem;
         //Text indent from the second line for better UI in mobile devices.
@@ -128,18 +128,18 @@ body {
         @extend .form__validation--first;
         margin-top: 0;
         margin-bottom: 1rem;
-        @include circleBefore(inline-flex);
+        @include circleBefore(inline-flex, $inputColor);
     }
 
     .form__validation{
         @extend .form__validation--first;
         margin: 0;
-        @include circleBefore(inline-flex);
+        @include circleBefore(inline-flex, $inputColor);
     }
     
     .form__validation--noCircle{
         @extend .form__validation--first;
-        @include circleBefore(none);
+        @include circleBefore(none, $inputColor);
         margin-left: 1rem;
         font-size: 0.875rem;
         margin-top: 0.75rem;
@@ -172,5 +172,21 @@ body {
                 box-shadow: 0 0 1rem $hoverShadow;
             }
         }
+    }
+
+    /* Additional classes to add with JS */
+    .form__validation--greenCircle--first{
+        @extend .form__validation--first;
+        @include circleBefore(inline-flex, $validatedButton);
+    }
+
+    .form__validation--greenCircle--fourth{
+        @extend .form__validation--fourth;
+        @include circleBefore(inline-flex, $validatedButton);
+    }
+
+    .form__validation--greenCircle{
+        @extend .form__validation;
+        @include circleBefore(inline-flex, $validatedButton);
     }
 }

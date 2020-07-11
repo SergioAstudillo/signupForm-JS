@@ -25,7 +25,7 @@
 
             <p class="form__inputLabel">EMAIL ADDRESS</p>
             <div class="input form__input--container">
-                <input type="text" id="inputEmail" class="form__input" placeholder="Email@domain.com">
+                <input type="text" id="inputEmail" class="form__input" placeholder="Email@domain.com" required>
             <span class="clearContainer">
                 <i class="fas fa-times" id="clear" onclick="clearButton();"></i>
             </span>
@@ -34,7 +34,7 @@
 
             <p class="form__inputLabel">PASSWORD</p>
             <div class="input form__input--container">
-                <input type="password" id="inputPassword" class="form__input" placeholder="Password" maxlength="30">
+                <input type="password" id="inputPassword" class="form__input" placeholder="Password" maxlength="30" required>
                 <span class="eyeContainer">
                     <i class="far fa-eye" id="eye-show" onclick="eyeButton();"></i>
                     <i class="far fa-eye-slash" id="eye-hide" onclick="eyeButton();"></i>
@@ -42,9 +42,9 @@
             </div>
 
             <p class="form__validation--first">At least 8 characters in the password field.</p>
-            <p class="form__validation">Include at least 3 numbers.</p>
+            <p class="form__validation">Include at least 1 number.</p>
             <p class="form__validation">At least use 1 capital letter and 1 lower case letter.</p>
-            <p class="form__validation--fourth">Include at least 1 symbol (ex: ! , . - + _ ?)</p>
+            <p class="form__validation--fourth">Include at least 1 symbol (ex: # ? ! @ $ € % & * - + . , )</p>
             
             <div class="button form__submitButton--container"><button type="button" class="form__submitButton" onclick="checkPassword();">Create account</button></div>
         
