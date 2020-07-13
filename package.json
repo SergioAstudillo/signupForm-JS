@@ -1,0 +1,28 @@
+{
+  "name": "signupform-js",
+  "version": "1.0.0",
+  "description": "SignUp AND Login in Node.JS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeRGiioxAG/signupForm-JS.git"
+  },
+  "author": "SeRGiioxAG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeRGiioxAG/signupForm-JS/issues"
+  },
+  "homepage": "https://github.com/SeRGiioxAG/signupForm-JS#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

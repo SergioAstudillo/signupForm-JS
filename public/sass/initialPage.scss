@@ -1,0 +1,89 @@
+//Import variables.
+@import "./var";
+@import "./fonts";
+@import "./functions";
+
+html{
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    background: $background;
+    // Fallback for old browsers.
+    background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
+    // Chrome 10-25, Safari 5.1-6.
+    background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
+    font-family: Montserrat;
+    text-transform: uppercase;
+}
+
+.form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+    background: $formColor;
+    border: 0.25rem solid $labelColor;
+    width: 50vw;
+    margin-top: 25vh;
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: 1.835rem;
+    box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
+
+    .form__title{
+        display: block;
+        text-align: center;
+        margin-top: 1.875rem;
+        margin-bottom: 0;
+        font-size: 2.5rem;
+        color: $labelColor;
+        text-decoration: underline;
+    }
+
+    .form__submitButton--container{
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        width: 100%;
+        flex-flow: row wrap;
+        .form__submitButton--left{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3.125rem;
+            width: 15rem;
+            margin-bottom: 1rem;
+            border-radius: 1.5rem;
+            border: 0.188rem solid $labelColor;
+            border-style: solid;
+            transition: box-shadow ease-in-out 0.5s;
+            text-transform: uppercase;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            color: $labelColor;
+            &:hover{
+                cursor: pointer;
+                box-shadow: 0 0 1rem $hoverShadow;
+            }
+        }
+        .form__submitButton--right{
+            @extend .form__submitButton--left;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+    
+    //Space between the button and the input when the login error has display:none;
+    .form__whitespace{
+        margin-top: 0.75rem;
+        margin-bottom: 0;
+    }
+    
+}

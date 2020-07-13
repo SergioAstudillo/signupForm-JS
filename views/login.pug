@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title Login Form
+		link(rel="stylesheet" href="/public/css/normalize.css")
+		link(rel="stylesheet" href="/public/css/style.css")
+		script(src="https://kit.fontawesome.com/3bea985cf6.js" crossorigin="anonymous")
+		// Import Personal favicons
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_.ico")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_16x16.png" sizes="16x16")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_192x192.png" sizes="192x192")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_512x512.png" sizes="512x512")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_32x32.png" sizes="32x32")
+	body
+		.form__container
+			form.form(action="" method="post")
+				p.form__title LOGIN
+				p.form__inputLabel EMAIL ADDRESS
+				.input.form__input--container
+					input#inputEmail.form__input(type="text" placeholder="Email@domain.com" required="")
+					span.clearContainer
+						i#clear.fas.fa-times(onclick="clearButton();")
+				p.form__inputLabel PASSWORD
+				.input.form__input--container
+					input#inputPassword.form__input(type="password" placeholder="Password" maxlength="30" required="")
+					span.eyeContainer
+						i#eye-show.far.fa-eye(onclick="eyeButton();")
+						i#eye-hide.far.fa-eye-slash(onclick="eyeButton();")
+				.form__whitespace
+				p.form__validation--login The account and password combination is incorrect. Please, try again.
+				.form__whitespace
+				.button.form__submitButton--container
+					button.form__submitButton(type="button") Access your account
+		script(src="/public/js/alerts.js")
+		script(src="/public/js/dom.js")
+		script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")

@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title Sign Up Form
+		// Import CSS and CDNs.
+		link(rel="stylesheet" type="text/css" href="public/css/normalize.css")
+		link(rel="stylesheet" type="text/css" href="public/css/initialPage.css")
+		script(src="https://kit.fontawesome.com/3bea985cf6.js" crossorigin="anonymous")
+		// Import Personal favicons
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_.ico")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_16x16.png" sizes="16x16")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_192x192.png" sizes="192x192")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_512x512.png" sizes="512x512")
+		link(rel="icon" type="image/png" href="/assets/icons/faviconPersonalSeRGiioxAG_32x32.png" sizes="32x32")
+	body
+		.form__container
+			form.form(action="" method="post")
+				p.form__title Main Page
+				.button.form__submitButton--container
+					button.form__submitButton--left(type="button" onclick="changePageSignUp();") Create account
+					button.form__submitButton--right(type="button" onclick="changePageLogin();") Access account
+		script.
+			function changePageLogin(){
+				window.location.href = './login';
+			}
+			function changePageSignUp(){
+				window.location.href = './signup';
+			}
+		script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
