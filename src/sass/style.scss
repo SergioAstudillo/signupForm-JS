@@ -198,5 +198,18 @@ body {
         @include circleBefore(inline-flex, $validatedButton);
     }
 
-
+    // Login validation for login.html
+    .form__validation--login{
+        @extend .form__validation--noCircle;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+        //TODO: Add display block when the password/email is incorrect during the login.
+    }
+    
+    //Space between the button and the input when the login error has display:none;
+    .form__whitespace{
+        margin-top: 0.75rem;
+        margin-bottom: 0;
+    }
+    
 }

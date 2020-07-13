@@ -36,7 +36,6 @@ function clearInput() {
     fourthValidation.classList.remove('form__validation--greenCircle--first');
 }
 
-//TODO: See if I can keep the following variables private.
 const dynamicValidation = document.querySelector('#inputPassword');
 
 function validatePassword() {
@@ -45,8 +44,6 @@ function validatePassword() {
     const thirdValidationButton = document.querySelector('.form__validation--third');
     const fourthValidationButton = document.querySelector('.form__validation--fourth');
 
-    const temporaryPassword = dynamicValidation.value;
-    console.log(temporaryPassword);
     /* Highlight (OR unhighlight) the FIRST button if the password has 8 characters (OR less than 8 characters). */
     if (dynamicValidation.value.replace(/\s/g, '').match(totalLength)) {
         firstValidationButton.classList.add('form__validation--greenCircle--first');
