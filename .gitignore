@@ -1,3 +1,4 @@
 node_modules
-stash
 package-lock.json
+/src/database.js
+/src/keys.js
