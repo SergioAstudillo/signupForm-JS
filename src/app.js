@@ -5,7 +5,7 @@ const path = require('path');
 const router = require('./routes.js');
 
 //Server initial settings
-app.set('port', 3000);
+app.set('port', 8080);
 app.set('views', 'views');
 app.set('view engine', 'pug');
 
@@ -20,5 +20,5 @@ app.use('/public', express.static('public'));
 
 /* Server listening */
 app.listen(app.get('port'), () => {
-    console.log(`Server on port: ${app.get('port')}`);
+    console.log(`Server started on port: ${app.get('port')}`);
 });
