@@ -10,7 +10,7 @@ html(lang="en")
 				p.form__title SIGN UP
 				p.form__inputLabel EMAIL ADDRESS
 				.input.form__input--container
-					input#inputEmail.form__input(type="text" placeholder="Email@domain.com" required="")
+					input#inputEmail.form__input(type="text" placeholder="Email@domain.com" maxlength="50" required="")
 					span.clearContainer
 						i#clear.fas.fa-times(onclick="clearButton();")
 				p.form__validation--noCircle The email is already in use.
