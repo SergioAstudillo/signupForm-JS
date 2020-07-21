@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+    head
+        title User Profile.
+        link(rel="stylesheet" type="text/css" href="public/css/profile.css")
+        include head.pug
+    body
+        //THIS IS A TEST
+        .form__container
+            p.form__title #{email}
+            p.form__title #{fullname}
+            p.form__title #{password}
+            p.form__title #{created_at}
+        script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
