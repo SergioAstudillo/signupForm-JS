@@ -1,5 +1,6 @@
 //Import MySQL npm package.
 const mysql = require('mysql');
+require('dotenv').config();
 
 //Import promisify package.
 const { promisify } = require('util');

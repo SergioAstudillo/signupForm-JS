@@ -151,6 +151,17 @@ body {
         text-indent: 0;
     }
 
+    //Addition class to add with JS for email validation.
+    .form__validation--noCircle--incorrect{
+        @extend .form__validation--noCircle;
+        display: block;
+    }
+
+    //Addition class to add with JS for email validation.
+    .form__validation--noCircle--inUse{
+        @extend .form__validation--noCircle--incorrect;
+    }
+
     .form__submitButton--container{
         display: flex;
         align-self: center;

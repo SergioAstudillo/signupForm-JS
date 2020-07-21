@@ -6,17 +6,18 @@ html(lang="en")
 		include head.pug
 	body
 		.form__container
-			form.form(action="" method="post")
+			form.form(action="/signup" method="POST")
 				p.form__title SIGN UP
 				p.form__inputLabel EMAIL ADDRESS
 				.input.form__input--container
-					input#inputEmail.form__input(type="text" placeholder="Email@domain.com" maxlength="50" required="")
+					input#inputEmail.form__input(type="text" name="emailInput" placeholder="Email@domain.com" maxlength="50" required="")
 					span.clearContainer
 						i#clear.fas.fa-times(onclick="clearButton();")
-				p.form__validation--noCircle The email is already in use.
+				p#emailValidationIncorrect.form__validation--noCircle The email address is incorrect.
+				p#emailValidationInUse.form__validation--noCircle The email is already in use.
 				p.form__inputLabel PASSWORD
 				.input.form__input--container
-					input#inputPassword.form__input(type="password" placeholder="Password" maxlength="30" required="")
+					input#inputPassword.form__input(type="password" name="passwordInput" placeholder="Password" maxlength="30" required="")
 					span.eyeContainer
 						i#eye-show.far.fa-eye(onclick="eyeButton();")
 						i#eye-hide.far.fa-eye-slash(onclick="eyeButton();")
@@ -25,7 +26,7 @@ html(lang="en")
 				p.form__validation--third At least use 1 capital letter and 1 lower case letter.
 				p.form__validation--fourth Include at least 1 symbol (ex: # ? ! @ $ € % & * - + . , )
 				.button.form__submitButton--container
-					button.form__submitButton(type="button" onclick="checkPassword();") Create account
+					button.form__submitButton(type="button" onclick="submitData();") Create account
 		script(src="public/js/alerts.js")
 		script(src="public/js/dom.js")
 		script(src="public/js/signUpValidation.js")

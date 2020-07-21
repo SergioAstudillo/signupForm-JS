@@ -1,8 +1,13 @@
+/* Dynamic password validation from lines 2 to 79 */
+/* Email validation from lines 80 to 92 */
 //Pattern separation for dynamic validation.
 const totalLength = /.{8,30}/g;
 const minimumNumbers = /[0-9]/g;
 const minimunLowerANDUpperCaseCharacters = /(?=.*[a-z])(?=.*[A-Z])/g;
 const minimumSymbols = /(?=.*?[#?!@$€%&*\-+.,])/g;
+
+/* Global variables */
+const submitButton = document.querySelector('.form__submitButton');
 
 /* Original regex separated. */
 function checkPassword() {
@@ -14,26 +19,26 @@ function checkPassword() {
 
     if (superSecretPassword.match(fullPasswordPattern)) {
         console.log('Valid password');
-        clearInput();
+        return true;
     } else {
         console.log('Invalid password');
-        document.getElementById('inputPassword').focus();
         clearInput();
+        document.getElementById('inputPassword').value = '';
+        document.getElementById('inputPassword').focus();
+        return false;
     }
 }
 
 function clearInput() {
-    document.getElementById('inputPassword').value = '';
-
     const firstValidation = document.querySelector('.form__validation--first');
     const secondValidation = document.querySelector('.form__validation--second');
     const thirdValidation = document.querySelector('.form__validation--third');
     const fourthValidation = document.querySelector('.form__validation--fourth');
 
     firstValidation.classList.remove('form__validation--greenCircle--first');
-    secondValidation.classList.remove('form__validation--greenCircle--first');
-    thirdValidation.classList.remove('form__validation--greenCircle--first');
-    fourthValidation.classList.remove('form__validation--greenCircle--first');
+    secondValidation.classList.remove('form__validation--greenCircle--second');
+    thirdValidation.classList.remove('form__validation--greenCircle--third');
+    fourthValidation.classList.remove('form__validation--greenCircle--fourth');
 }
 
 const dynamicValidation = document.querySelector('#inputPassword');
@@ -76,3 +81,34 @@ function validatePassword() {
 //Event listener for dynamic typing.
 dynamicValidation.addEventListener('keydown', validatePassword);
 dynamicValidation.addEventListener('keyup', validatePassword);
+
+/* Email validation. */
+function checkEmail() {
+    const fullEmailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    const userEmail = document.querySelector('#inputEmail');
+    const correctedUserEmail = userEmail.value.replace(/\s/g, '').toLowerCase();
+    const emailValidationIncorrect = document.querySelector('#emailValidationIncorrect');
+
+    if (correctedUserEmail.match(fullEmailPattern)) {
+        console.log(`The email you introduced is valid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
+        userEmail.value = correctedUserEmail;
+        emailValidationIncorrect.classList.remove('form__validation--noCircle--incorrect');
+        return true;
+    } else {
+        emailValidationIncorrect.classList.add('form__validation--noCircle--incorrect');
+        userEmail.value = '';
+        userEmail.focus();
+        console.log(`The email you introduced is invalid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
+    }
+}
+
+function submitData() {
+    //checkPassword() && checkEmail() ? submitButton.setAttribute('type', 'submit') : console.log('Check your email and password, there is some invalid data.');
+    if (checkPassword() && checkEmail()) {
+        submitButton.setAttribute('type', 'submit');
+    } else {
+        console.log('Check your email and password, there is some invalid data.');
+        submitButton.setAttribute('type', 'button');
+    }
+}

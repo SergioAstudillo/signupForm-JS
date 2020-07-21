@@ -7,11 +7,11 @@
 <ul style="padding-left:0;">
 <p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Technologies used:</u></p>
 
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">HTML5</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Pug</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">SaSS (CSS3)</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">JS (ES6)</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Node.JS</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL (SQL)</li>
 </ul>
 
 <ul style="padding-left:0;">
@@ -26,7 +26,16 @@
 <p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Node.JS modules used for development:</u></p>
 
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express.</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">EJS.</li>
+    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-mysql-session</li>
+    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-session</li>
+    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-validator</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Pug</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Morgan</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Nodemon</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Passport</li>
+    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Passport-local</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">TimeAgo.js</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Dot.env</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Bcrypt.js</li>
 </ul>

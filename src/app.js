@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = require('./routes/routes.js');
+const authentication = require('./routes/authentication');
 const morgan = require('morgan');
-//Import the .env file.
 require('dotenv').config();
 
 /* Server initial settings */
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 /* Routes */
 app.use(router);
-app.use(require('./routes/authentication'));
+app.use(authentication);
 
 /* Static files */
 app.use('/assets', express.static('src/assets'));
