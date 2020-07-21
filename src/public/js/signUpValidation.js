@@ -1,5 +1,6 @@
 /* Dynamic password validation from lines 2 to 79 */
 /* Email validation from lines 80 to 92 */
+
 //Pattern separation for dynamic validation.
 const totalLength = /.{8,30}/g;
 const minimumNumbers = /[0-9]/g;
@@ -104,11 +105,5 @@ function checkEmail() {
 }
 
 function submitData() {
-    //checkPassword() && checkEmail() ? submitButton.setAttribute('type', 'submit') : console.log('Check your email and password, there is some invalid data.');
-    if (checkPassword() && checkEmail()) {
-        submitButton.setAttribute('type', 'submit');
-    } else {
-        console.log('Check your email and password, there is some invalid data.');
-        submitButton.setAttribute('type', 'button');
-    }
+    checkPassword() && checkEmail() ? submitButton.setAttribute('type', 'submit') : submitButton.setAttribute('type', 'button');
 }

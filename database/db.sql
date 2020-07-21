@@ -1,4 +1,4 @@
--- Creation of our database.
+-- Creation of the database.
 CREATE DATABASE mainDatabase; 
 
 -- Selecting the database.
