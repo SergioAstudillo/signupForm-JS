@@ -11,9 +11,14 @@ const authentication = require('./routes/authentication');
 const morgan = require('morgan');
 //Import pug.
 const pug = require('pug');
+//Import Flash.
+const flash = require('connect-flash');
 /* Import express-session and passport */
 const session = require('express-session');
 const passport = require('passport');
+const MySQLStore = require('express-mysql-session');
+const { database } = require('./keys.js');
+
 require('./lib/passport');
 //Import .env
 require('dotenv').config();
@@ -29,6 +34,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 //Allows to use JSON in the app to communicate between the client and the server.
 app.use(express.json());
+app.use(flash());
 /* Initialize passport and passport.session */
 app.use(passport.initialize());
 app.use(passport.session());
@@ -36,7 +42,7 @@ app.use(passport.session());
 /* Global variables */
 //Get the request from the user, the response and the next function to execute.
 app.use((req, res, next) => {
-    next();
+	next();
 });
 
 /* Routes */
@@ -49,5 +55,5 @@ app.use('/public', express.static('src/public'));
 
 /* Server listening */
 app.listen(app.get('port'), () => {
-    console.log(`Server started on port: ${app.get('port')}`);
+	console.log(`Server started on port: ${app.get('port')}`);
 });
