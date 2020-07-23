@@ -19,55 +19,53 @@ body {
 
 .card__container {
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
-    position: relative;
+    flex-direction: column;
 
     .card {
         background: $formColor;
         border: 0.25rem solid $labelColor;
-        width: 50%;
+        width: 65vw;
         margin-top: 25vh;
+        display: flex;
+        flex-flow: column nowrap;
         border-radius: 1.835rem;
         box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
-        position: relative;
-        display: flex;
-        flex-flow: column wrap;
-        align-items: center;
-        justify-content: center;
-
-        .card__title--wrapper{
-            display: block;
-            margin-left: 0;
-            margin-top: 0;
-            width: 100%;
+        overflow-wrap: break-word;
 
             .card__title{
+                display: block;
+                margin-left: 0;
+                margin-top: 0;
+                width: 100%;    
+                text-align: center;
                 margin-top: 1.875rem;
                 margin-bottom: 0;
                 font-size: 2.5rem;
                 color: $labelColor;
-                text-align: center;
                 text-decoration: underline;
                 text-transform: uppercase;
             }
-        }
         .card__paragraph--wrapper{
             .card__paragraph{
                 margin-top: 0.5rem;
+                margin-bottom: 0;
                 display: block;
                 text-align: center;
                 font-size: 1.5rem;
                 text-transform: uppercase;
             }
     
-            .card__data{
-                display: block;
+            span.card__data{
+                display: flex;
+                flex-flow: column wrap;
                 justify-content: center;
                 align-items: center;
                 font-size: 1rem;
+                text-align: center;
                 text-transform: none;
+                margin-bottom: 1rem;
                 .card__data--fullname{
                     text-transform: capitalize;
                 }
