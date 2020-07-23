@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 /* Test */
 const pug = require('pug');
-const path = require('path');
 
 //Import the connection created in database.js
-const dbCONNECTION = require('../database');
 const pool = require('../database');
 
 /* Receive the form in POST and insert the data in the DB. */
@@ -23,11 +21,11 @@ router.post('/signup', async (req, res) => {
     };
     try {
         await pool.query('INSERT INTO users set ?', [newUser]);
+        console.log('Data received and stored in the DB.');
     } catch (err) {
         console.log(err);
         console.log('There has been an error inserting the data in the DB.');
     }
-    console.log('Data received');
 });
 
 /* Retrieve the data from the DB when the user is logged in. */

@@ -1,0 +1,114 @@
+//Import variables.
+@import "./var";
+@import "./fonts";
+@import "./functions";
+
+html{
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    background: $background;
+    // Fallback for old browsers.
+    background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
+    // Chrome 10-25, Safari 5.1-6.
+    background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
+    font-family: Montserrat;
+}
+
+.card__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .card {
+        background: $formColor;
+        border: 0.25rem solid $labelColor;
+        width: 50%;
+        margin-top: 25vh;
+        border-radius: 1.835rem;
+        box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
+        position: relative;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+
+        .card__title--wrapper{
+            display: block;
+            margin-left: 0;
+            margin-top: 0;
+            width: 100%;
+
+            .card__title{
+                margin-top: 1.875rem;
+                margin-bottom: 0;
+                font-size: 2.5rem;
+                color: $labelColor;
+                text-align: center;
+                text-decoration: underline;
+                text-transform: uppercase;
+            }
+        }
+        .card__paragraph--wrapper{
+            .card__paragraph{
+                margin-top: 0.5rem;
+                display: block;
+                text-align: center;
+                font-size: 1.5rem;
+                text-transform: uppercase;
+            }
+    
+            .card__data{
+                display: block;
+                justify-content: center;
+                align-items: center;
+                font-size: 1rem;
+                text-transform: none;
+                .card__data--fullname{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        
+
+        .form__submitButton--container{
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            width: 100%;
+            flex-flow: row wrap;
+            .form__submitButton--left{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 3.125rem;
+                width: 15rem;
+                margin-bottom: 1rem;
+                border-radius: 1.5rem;
+                border: 0.188rem solid $labelColor;
+                border-style: solid;
+                transition: box-shadow ease-in-out 0.5s;
+                text-transform: uppercase;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                margin-top: 0.5rem;
+                color: $labelColor;
+                &:hover{
+                    cursor: pointer;
+                    box-shadow: 0 0 1rem $hoverShadow;
+                }
+            }
+            .form__submitButton--right{
+                @extend .form__submitButton--left;
+                margin-top: 0.5rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+
+}

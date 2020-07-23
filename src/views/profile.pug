@@ -5,10 +5,17 @@ html(lang="en")
         link(rel="stylesheet" type="text/css" href="public/css/profile.css")
         include head.pug
     body
-        //THIS IS A TEST
-        .form__container
-            p.form__title #{email}
-            p.form__title #{fullname}
-            p.form__title #{password}
-            p.form__title #{created_at}
-        script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
+        //WIP (Dummy text)
+        .card__container
+            .card
+                .card__title--wrapper
+                    h1.card__title Here is your profile information:
+                .card__paragraph--wrapper
+                    p.card__paragraph This is your email:&nbsp #[span.card__data #{email}]
+                    p.card__paragraph This is your fullname:&nbsp #[span.card__data.card__data--fullname #{fullname}]
+                    p.card__paragraph This is your password:&nbsp #[span.card__data #{password}]
+                    p.card__paragraph You created your profile:&nbsp #[span.card__data #{created_at}]
+                .button.form__submitButton--container
+                    button.form__submitButton--left(type="button" onclick="") Change data
+                    button.form__submitButton--right(type="button" onclick="") Log out
+            script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
