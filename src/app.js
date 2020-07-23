@@ -1,10 +1,21 @@
-/* Importing the npm modules */
+/* Importing express and initialize */
 const express = require('express');
 const app = express();
+//Import path.
 const path = require('path');
+/* Import router, defined in router.js */
 const router = require('./routes/routes.js');
+/* Import another router, defined in authentication.js */
 const authentication = require('./routes/authentication');
+//Import Morgan.
 const morgan = require('morgan');
+//Import pug.
+const pug = require('pug');
+/* Import express-session and passport */
+const session = require('express-session');
+const passport = require('passport');
+require('./lib/passport');
+//Import .env
 require('dotenv').config();
 
 /* Server initial settings */
@@ -18,6 +29,9 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 //Allows to use JSON in the app to communicate between the client and the server.
 app.use(express.json());
+/* Initialize passport and passport.session */
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Global variables */
 //Get the request from the user, the response and the next function to execute.
