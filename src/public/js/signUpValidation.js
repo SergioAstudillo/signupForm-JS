@@ -22,7 +22,7 @@ function checkPassword() {
         console.log('Valid password');
         return true;
     } else {
-        console.log('Invalid password');
+        console.error('Invalid password');
         clearInput();
         document.getElementById('inputPassword').value = '';
         document.getElementById('inputPassword').focus();
@@ -100,7 +100,7 @@ function checkEmail() {
         emailValidationIncorrect.classList.add('form__validation--noCircle--incorrect');
         userEmail.value = '';
         userEmail.focus();
-        console.log(`The email you introduced is invalid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
+        console.err(`The email you introduced is invalid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
     }
 }
 
