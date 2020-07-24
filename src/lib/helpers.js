@@ -11,7 +11,7 @@ helpers.encryptPassword = async password => {
 
 helpers.comparePassword = async (unhashedPassword, hashedPassword) => {
 	try {
-		await bcrypt.compare(unhashedPassword, hashedPassword);
+		return await bcrypt.compare(unhashedPassword, hashedPassword);
 	} catch (err) {
 		console.error(err);
 		console.error('Error comparing your password with the DB.');

@@ -10,12 +10,12 @@ html(lang="en")
 				p.form__title LOGIN
 				p.form__inputLabel EMAIL ADDRESS
 				.input.form__input--container
-					input#inputEmail.form__input(type="text" placeholder="Email@domain.com" required="")
+					input#inputEmail.form__input(type="text" name="emailInput" placeholder="Email@domain.com" maxlength="50" required="")
 					span.clearContainer
 						i#clear.fas.fa-times(onclick="clearButton();")
 				p.form__inputLabel PASSWORD
 				.input.form__input--container
-					input#inputPassword.form__input(type="password" placeholder="Password" maxlength="30" required="")
+					input#inputPassword.form__input(type="password" name="passwordInput" placeholder="Password" maxlength="30" required="")
 					span.eyeContainer
 						i#eye-show.far.fa-eye(onclick="eyeButton();")
 						i#eye-hide.far.fa-eye-slash(onclick="eyeButton();")
@@ -23,7 +23,6 @@ html(lang="en")
 				p.form__validation--login The account and password combination is incorrect. Please, try again.
 				.form__whitespace
 				.button.form__submitButton--container
-					button.form__submitButton(type="button") Access your account
+					button.form__submitButton(type="submit") Access your account
 		script(src="public/js/alerts.js")
 		script(src="public/js/dom.js")
-		script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")

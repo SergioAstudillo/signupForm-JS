@@ -29,6 +29,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 /* Middlewares */
+app.use(
+	session({
+		cookie: { maxAge: 60000 },
+		secret: 'woot',
+		resave: false,
+		saveUninitialized: false,
+	}),
+);
 app.use(morgan('dev'));
 //Accept the data from the user in the form.
 app.use(express.urlencoded({ extended: false }));
@@ -42,6 +50,8 @@ app.use(passport.session());
 /* Global variables */
 //Get the request from the user, the response and the next function to execute.
 app.use((req, res, next) => {
+	app.locals.success = req.flash('success');
+	app.locals.message = req.flash('message');
 	next();
 });
 
