@@ -1,0 +1,17 @@
+<div class="form__container">
+	<form class="form">
+		<p class="form__title">Main Page</p>
+		<div class="button form__submitButton--container">
+			<button class="form__submitButton--left" type="button" onclick="changePageLogin()">Access account</button>
+			<button class="form__submitButton--right" type="button" onclick="changePageSignUp()">Create account</button>
+		</div>
+	</form>
+</div>
+<script>
+	function changePageLogin(){
+		window.location.href = 'login';
+	}
+	function changePageSignUp(){
+		window.location.href = 'signup';
+	}
+</script>

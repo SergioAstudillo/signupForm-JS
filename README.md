@@ -7,7 +7,7 @@
 <ul style="padding-left:0;">
 <p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Technologies used:</u></p>
 
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Pug</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Handlebars (HTML)</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">SaSS (CSS3)</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">JS (ES6)</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Node.JS</li>
@@ -29,7 +29,7 @@
     <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-mysql-session</li>
     <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-session</li>
     <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-validator</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Pug</li>
+<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-handlebars</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Morgan</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Nodemon</li>
 <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL</li>

@@ -7,16 +7,17 @@ const path = require('path');
 const router = require('./routes/routes.js');
 /* Import another router, defined in authentication.js */
 const authentication = require('./routes/authentication');
+//Import express-handlebars to define our view engine.
+const handlebars = require('express-handlebars');
 //Import Morgan.
 const morgan = require('morgan');
-//Import pug.
-const pug = require('pug');
 //Import Flash.
 const flash = require('connect-flash');
 /* Import express-session and passport */
 const session = require('express-session');
 const passport = require('passport');
 const MySQLStore = require('express-mysql-session');
+//Import the database from keys.js
 const { database } = require('./keys.js');
 
 require('./lib/passport');
@@ -26,7 +27,17 @@ require('dotenv').config();
 /* Server initial settings */
 app.set('port', process.env.PORT);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine(
+	'.hbs',
+	handlebars({
+		defaultLayout: 'default',
+		layoutsDir: path.join(app.get('views'), 'layouts'),
+		partialsDir: path.join(app.get('views'), 'partials'),
+		extname: '.hbs',
+		//helpers: require('.lib/handlebars'),
+	}),
+);
+app.set('view engine', '.hbs');
 
 /* Middlewares */
 app.use(
@@ -52,7 +63,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
 	app.locals.incorrectPassword = req.flash('incorrectPassword');
-	app.locals.unknownEmail = req.flash('unknownUsername');
+	app.locals.unknownEmail = req.flash('unknownEmail');
 	next();
 });
 

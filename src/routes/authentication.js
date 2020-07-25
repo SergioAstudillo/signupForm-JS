@@ -6,13 +6,14 @@ const pool = require('../database');
 
 //Import the timestamp created by timeago.js
 const time = require('../lib/timeago');
-
+//TODO: pasar esto a el /profile console.log(time.timeago(created_at));
 /* Receive the form in POST and insert the data in the DB. After that it redirects to /profile */
 router.post(
 	'/signup',
 	passport.authenticate('local.signup', {
 		successRedirect: '/profile',
 		failureRedirect: '/signup',
+		successFlash: true,
 		failureFlash: true,
 	}),
 );
@@ -21,6 +22,7 @@ router.post('/login', (req, res, next) => {
 	passport.authenticate('local.login', {
 		successRedirect: '/profile',
 		failureRedirect: '/login',
+		successFlash: true,
 		failureFlash: true,
 	})(req, res, next);
 });
@@ -40,17 +42,12 @@ router.get('/profile', async (req, res) => {
 		// 		},
 		// 	}),
 		// });
-		res.render(
-			'profile',
-			//     , {
-			// 	email: email,
-			// 	fullname: fullname,
-			// 	password: password,
-			// 	created_at: created_at,
-			// }
-		);
+		//Import the user email, fullname and the time of creation to show on /profile
+		const account = require('./../lib/passport');
+		res.render('profile', { title: 'User Profile', css: 'public/css/profile.css', account });
 	} catch (err) {
-		console.error(`There has been an error trying to select the user from the database.\nOR \nThere has been an error trying to render /profile page.\nThis is the error code: \n${err}`);
+		console.error(err);
+		console.error('There has been an error loading the /profile page.');
 	}
 });
 

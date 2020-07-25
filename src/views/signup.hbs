@@ -1,0 +1,24 @@
+<div class="form__container">
+	<form class="form" action="/signup" method="POST">
+		<p class="form__title">SIGN UP</p>
+		<p class="form__inputLabel">EMAIL ADDRESS</p>
+		<div class="input form__input--container">
+		  	<input class="form__input" id="inputEmail" type="text" name="emailInput" placeholder="Email@domain.com" maxlength="50" required=""><span class="clearContainer"><i class="fas fa-times" id="clear" onclick="clearButton();"></i></span>
+		</div>
+		<p class="form__validation--noCircle" id="emailValidationIncorrect">The email address is incorrect.</p>
+		<p class="form__validation--noCircle" id="emailValidationInUse">The email is already in use.</p>
+		<p class="form__inputLabel">PASSWORD</p>
+		<div class="input form__input--container">
+			<input class="form__input" id="inputPassword" type="password" name="passwordInput" placeholder="Password" maxlength="30" required=""><span class="eyeContainer"><i class="far fa-eye" id="eye-show" onclick="eyeButton();"></i><i class="far fa-eye-slash" id="eye-hide" onclick="eyeButton();"></i></span>
+		</div>
+		<p class="form__validation--first">At least 8 characters in the password field.</p>
+		<p class="form__validation--second">Include at least 1 number.</p>
+		<p class="form__validation--third">At least use 1 capital letter and 1 lower case letter.</p>
+		<p class="form__validation--fourth">Include at least 1 symbol (ex: # ? ! @ $ € % & * - + . , )</p>
+		<div class="button form__submitButton--container">
+		  	<button class="form__submitButton" type="button" onclick="submitData();">Create account</button>
+		</div>
+	</form>
+</div>
+<script src="public/js/dom.js"></script>
+<script src="public/js/signUpValidation.js"></script>

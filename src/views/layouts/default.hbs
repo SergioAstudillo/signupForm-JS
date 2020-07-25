@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- Import NormalizeCSS and CDNs.-->
+	<link rel="stylesheet" type="text/css" href="public/css/normalize.css"/>
+	<script src="https://kit.fontawesome.com/3bea985cf6.js" crossorigin="anonymous"></script>
+	<!-- Styles and title -->
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ css }}">
+	<!-- Import Personal favicons.-->
+	<link rel="icon" type="image/png" href="assets/icons/faviconPersonalSeRGiioxAG_.ico"/>
+	<link rel="icon" type="image/png" href="assets/icons/faviconPersonalSeRGiioxAG_16x16.png" sizes="16x16"/>
+	<link rel="icon" type="image/png" href="assets/icons/faviconPersonalSeRGiioxAG_192x192.png" sizes="192x192"/>
+	<link rel="icon" type="image/png" href="assets/icons/faviconPersonalSeRGiioxAG_512x512.png" sizes="512x512"/>
+	<link rel="icon" type="image/png" href="assets/icons/faviconPersonalSeRGiioxAG_32x32.png" sizes="32x32"/>
+	<!-- SweetAlert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+<body>
+	{{{ body }}}
+	
+	{{#if success}}
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'You successfully logged in',
+			text: `Welcome back {{success}}`,
+		});
+	</script>
+	{{/if}}
+
+	{{#if unknownEmail}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: 'Unknown email.',
+			text: `{{unknownEmail}} doesn't exist in our DB.`,
+		});
+		</script>
+	{{/if}}
+
+	{{#if incorrectPassword}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: 'Incorrect password.',
+			text: `{{incorrectPassword}} has a different password.`,
+		});
+		</script>
+	{{/if}}
+
+
+
+</body>
+</html>

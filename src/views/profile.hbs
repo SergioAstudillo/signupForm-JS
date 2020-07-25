@@ -1,0 +1,16 @@
+<!--WIP (Dummy text)-->
+<div class="card__container">
+	<div class="card">
+		<h1 class="card__title">Here is your profile information:</h1>
+		<div class="card__paragraph--wrapper">
+			<p class="card__paragraph">This is your email:</p><span class="card__data">{{account.email}}</span>
+			<p class="card__paragraph">This is your fullname:</p><span class="card__data card__data--fullname">{{account.fullname}}</span>
+			<p class="card__paragraph">You created your profile:</p><span class="card__data">{{account.creationDate}}</span>
+		</div>
+		<div class="button form__submitButton--container"> 
+			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
+			<button class="form__submitButton--left" type="button" onclick="">Change data</button>
+			<button class="form__submitButton--right" type="button" onclick="">Log out</button>
+		</div>
+	</div>
+</div>

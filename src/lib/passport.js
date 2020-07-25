@@ -3,7 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const pool = require('../database');
 const helpers = require('./helpers');
-const alerts = require('./../public/js/alerts');
+const time = require('./timeago');
 
 passport.use(
 	'local.login',
@@ -16,13 +16,20 @@ passport.use(
 		async (req, email, password, done) => {
 			const entry = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
 			if (entry.length > 0) {
-				const userFullname = entry[0].fullname;
 				const user = entry[0];
+				const userFullname = user.fullname;
+				const userEmail = user.email;
+				const timeSinceCreation = time.timeago(user.created_at);
+				const account = {
+					email: userEmail,
+					fullname: userFullname,
+					creationDate: timeSinceCreation,
+				};
+				module.exports = account;
 				const validPassword = await helpers.comparePassword(password, user.password);
-				validPassword ? done(null, user, req.flash('success', alerts.success(email))) : done(null, false, req.flash('incorrectPassword', alerts.incorrectPassword(email)));
+				validPassword ? done(null, user, req.flash('success', userFullname)) : done(null, false, req.flash('incorrectPassword', email));
 			} else {
-				return done(null, false, req.flash('unknownEmail', alerts.unknownEmail(email) /*"Email doesn't exist."*/));
-				//TODO: create the flashes using SweetAlert.
+				return done(null, false, req.flash('unknownEmail', email));
 			}
 		},
 	),
