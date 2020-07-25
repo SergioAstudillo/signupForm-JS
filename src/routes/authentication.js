@@ -23,7 +23,6 @@ router.post('/login', (req, res, next) => {
 		failureRedirect: '/login',
 		failureFlash: true,
 	})(req, res, next);
-	console.log(req.body);
 });
 
 /* Retrieve the data from the DB when the user is logged in. It shows that data */

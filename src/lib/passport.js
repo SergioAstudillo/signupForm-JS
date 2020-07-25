@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const pool = require('../database');
 const helpers = require('./helpers');
+const alerts = require('./../public/js/alerts');
 
 passport.use(
 	'local.login',
@@ -15,11 +16,12 @@ passport.use(
 		async (req, email, password, done) => {
 			const entry = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
 			if (entry.length > 0) {
+				const userFullname = entry[0].fullname;
 				const user = entry[0];
 				const validPassword = await helpers.comparePassword(password, user.password);
-				validPassword ? done(null, user, req.flash('success', 'Welcome ' + user.email)) : done(null, false, req.flash('message', 'Incorrect password'));
+				validPassword ? done(null, user, req.flash('success', alerts.success(email))) : done(null, false, req.flash('incorrectPassword', alerts.incorrectPassword(email)));
 			} else {
-				return done(null, false, req.flash('message', "Username doesn't exist."));
+				return done(null, false, req.flash('unknownEmail', alerts.unknownEmail(email) /*"Email doesn't exist."*/));
 				//TODO: create the flashes using SweetAlert.
 			}
 		},
@@ -45,7 +47,7 @@ passport.use(
 			try {
 				const result = await pool.query('INSERT INTO users set ?', [newUser]);
 				newUser.id = result.insertId;
-				console.log('Data received and stored in the DB.');
+				req.flash('success', 'Data received and stored in the DB.');
 				return done(null, newUser);
 			} catch (err) {
 				console.error(err);

@@ -31,18 +31,18 @@ app.set('view engine', 'pug');
 /* Middlewares */
 app.use(
 	session({
-		cookie: { maxAge: 60000 },
-		secret: 'woot',
+		secret: process.env.SECRET,
 		resave: false,
 		saveUninitialized: false,
+		store: new MySQLStore(database),
 	}),
 );
+app.use(flash());
 app.use(morgan('dev'));
 //Accept the data from the user in the form.
 app.use(express.urlencoded({ extended: false }));
 //Allows to use JSON in the app to communicate between the client and the server.
 app.use(express.json());
-app.use(flash());
 /* Initialize passport and passport.session */
 app.use(passport.initialize());
 app.use(passport.session());
@@ -51,7 +51,8 @@ app.use(passport.session());
 //Get the request from the user, the response and the next function to execute.
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
-	app.locals.message = req.flash('message');
+	app.locals.incorrectPassword = req.flash('incorrectPassword');
+	app.locals.unknownEmail = req.flash('unknownUsername');
 	next();
 });
 
