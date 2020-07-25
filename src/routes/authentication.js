@@ -6,7 +6,7 @@ const pool = require('../database');
 
 //Import the timestamp created by timeago.js
 const time = require('../lib/timeago');
-//TODO: pasar esto a el /profile console.log(time.timeago(created_at));
+
 /* Receive the form in POST and insert the data in the DB. After that it redirects to /profile */
 router.post(
 	'/signup',

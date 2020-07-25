@@ -19,7 +19,7 @@ const passport = require('passport');
 const MySQLStore = require('express-mysql-session');
 //Import the database from keys.js
 const { database } = require('./keys.js');
-
+//TODO: check if this line is necessary.
 require('./lib/passport');
 //Import .env
 require('dotenv').config();
@@ -40,6 +40,7 @@ app.engine(
 app.set('view engine', '.hbs');
 
 /* Middlewares */
+/* Creation of the session. */
 app.use(
 	session({
 		secret: process.env.SECRET,
@@ -48,6 +49,7 @@ app.use(
 		store: new MySQLStore(database),
 	}),
 );
+//Initialize flash to create the 3 flash messages options
 app.use(flash());
 app.use(morgan('dev'));
 //Accept the data from the user in the form.
@@ -59,7 +61,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Global variables */
-//Get the request from the user, the response and the next function to execute.
+//Creation of the 3 possible flash messages.
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
 	app.locals.incorrectPassword = req.flash('incorrectPassword');
