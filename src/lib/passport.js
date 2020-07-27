@@ -59,8 +59,7 @@ passport.use(
 			try {
 				const result = await pool.query('INSERT INTO users set ?', [newUser]);
 				newUser.id = result.insertId;
-				req.flash('success', 'Data received and stored in the DB.');
-				return done(null, newUser);
+				return done(null, newUser, req.flash('successSignup', newUser.email));
 			} catch (err) {
 				console.error(err);
 				console.error('There has been an error inserting the data in the DB');

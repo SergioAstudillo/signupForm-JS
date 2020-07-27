@@ -112,6 +112,11 @@ body {
                 margin-left: 1rem;
                 margin-right: 1rem;
             }
+            .form__submitButton--login{
+                @extend .form__submitButton--left;
+                color: $labelColor;
+                background: $inputColor;
+            }
         }
     }
 

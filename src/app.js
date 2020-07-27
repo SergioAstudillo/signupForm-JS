@@ -64,8 +64,12 @@ app.use(passport.session());
 //Creation of the 3 possible flash messages.
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
+	app.locals.successSignup = req.flash('successSignup');
 	app.locals.incorrectPassword = req.flash('incorrectPassword');
 	app.locals.unknownEmail = req.flash('unknownEmail');
+	app.locals.alreadyLoggedIn = req.flash('alreadyLoggedIn');
+	app.locals.notLoggedIn = req.flash('notLoggedIn');
+	app.locals.user = req.user;
 	next();
 });
 

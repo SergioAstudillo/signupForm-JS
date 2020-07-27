@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!-- Import NormalizeCSS and CDNs (fontaweosome and sweetalert2).-->
+	<!-- Import NormalizeCSS and CDNs (fontawesome and sweetalert2).-->
 	<link rel="stylesheet" type="text/css" href="public/css/normalize.css"/>
 	<script src="https://kit.fontawesome.com/3bea985cf6.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -25,11 +25,21 @@
 	<script>
 		Swal.fire({
 			icon: 'success',
-			title: 'You successfully logged in',
-			text: `Welcome back {{success}}`,
+			title: 'You successfully logged in.',
+			text: `Welcome back, {{success}}`,
 		});
 	</script>
 	{{/if}}
+
+	{{#if successSignup}}
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'You successfully created your account.',
+			text: `Please, log in with your new account: {{successSignup}}`,
+		});
+	</script>
+	{{/if}}	
 
 	{{#if unknownEmail}}
 		<script>
@@ -51,7 +61,25 @@
 		</script>
 	{{/if}}
 
+	{{#if alreadyLoggedIn}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: "You're already logged in.",
+			text: `{{alreadyLoggedIn}}`,
+		});
+		</script>
+	{{/if}}
 
+	{{#if notLoggedIn}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: "You're not logged in.,
+			text: `{{notLoggedIn}}`,
+		});
+		</script>
+	{{/if}}
 
 </body>
 </html>
