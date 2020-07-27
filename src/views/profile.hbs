@@ -10,8 +10,24 @@
 		<div class="button form__submitButton--container"> 
 			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
 			<button class="form__submitButton--left" type="button" onclick="">Change data</button>
-			<button class="form__submitButton--right" type="button" onclick="window.location.href='/logout'">Log out</button>
+			<button class="form__submitButton--right" type="button" onclick="logOutAlert();">Log out</button>
 		</div>
 		{{/if}}
 	</div>
 </div>
+
+<script>
+	function logOutAlert(){
+	Swal.fire({
+	title: 'Are you sure you want to log out?',
+	text: 'You will have to log in again to access your profile.',
+	icon: 'warning',
+	showCancelButton: true,
+	showConfirmButton: true,
+	confirmButtonColor: '#c03a2bd5',
+	confirmButtonText: 'Yes, I want to log out.',
+	cancelButtonText: 'No, I want to stay.',
+	focusCancel: 'true',
+	}).then((result) => { if (result.value) window.location.href='/logout'; })
+	}
+</script>
