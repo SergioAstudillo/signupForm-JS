@@ -67,8 +67,8 @@ app.use((req, res, next) => {
 	app.locals.successSignup = req.flash('successSignup');
 	app.locals.incorrectPassword = req.flash('incorrectPassword');
 	app.locals.unknownEmail = req.flash('unknownEmail');
-	app.locals.alreadyLoggedIn = req.flash('alreadyLoggedIn');
-	app.locals.notLoggedIn = req.flash('notLoggedIn');
+	app.locals.userLoggedIn = req.flash('userLoggedIn');
+	app.locals.userNotLoggedIn = req.flash('userNotLoggedIn');
 	app.locals.user = req.user;
 	next();
 });

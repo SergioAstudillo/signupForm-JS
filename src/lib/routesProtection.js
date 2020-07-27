@@ -1,17 +1,19 @@
 module.exports = {
-	isLoggedIn(req, res, next) {
+	/* This will get executed ONLY when the user IS NOT logged in. */
+	userLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
 			return next();
 		}
-		req.flash('alreadyLoggedIn', 'If you want to go there, please log out first.');
+		req.flash('userLoggedIn', 'Please, log in first to go there.');
 		return res.redirect('/login');
 	},
 
-	isNotLoggedIn(req, res, next) {
+	/* This will get executed ONLY when the user IS logged in. */
+	userNotLoggedIn(req, res, next) {
 		if (!req.isAuthenticated()) {
-			next();
+			return next();
 		}
-		req.flash('notLoggedIn', 'Please log in with your account first.');
+		req.flash('userNotLoggedIn', 'Please, log out first to go there.');
 		return res.redirect('/profile');
 	},
 };

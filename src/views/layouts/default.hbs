@@ -61,22 +61,22 @@
 		</script>
 	{{/if}}
 
-	{{#if alreadyLoggedIn}}
+	{{#if userLoggedIn}}
 		<script>
 		Swal.fire({
 			icon: 'error',
-			title: "You're already logged in.",
-			text: `{{alreadyLoggedIn}}`,
+			title: `You're not logged in.`,
+			text: `{{userLoggedIn}}`,
 		});
 		</script>
 	{{/if}}
 
-	{{#if notLoggedIn}}
+	{{#if userNotLoggedIn}}
 		<script>
 		Swal.fire({
 			icon: 'error',
-			title: "You're not logged in.,
-			text: `{{notLoggedIn}}`,
+			title: `You're already logged in.`,
+			text: `{{userNotLoggedIn}}`,
 		});
 		</script>
 	{{/if}}

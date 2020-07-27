@@ -5,10 +5,13 @@ const passport = require('passport');
 const pool = require('../database');
 //Import the timestamp created by timeago.js
 const time = require('../lib/timeago');
+//Import 2 methods to check if the user is already logged in or not.
+const { userLoggedIn, userNotLoggedIn } = require('./../lib/routesProtection');
 
 /* Receive the form in POST and insert the data in the DB. After that it redirects to /profile */
 router.post(
 	'/signup',
+	userNotLoggedIn,
 	passport.authenticate('local.signup', {
 		successRedirect: '/login',
 		failureRedirect: '/signup',
@@ -18,7 +21,7 @@ router.post(
 );
 
 /* Receive the form in POST and compare it with the correspondent DB registry */
-router.post('/login', (req, res, next) => {
+router.post('/login', userNotLoggedIn, (req, res, next) => {
 	passport.authenticate('local.login', {
 		successRedirect: '/profile',
 		failureRedirect: '/login',
@@ -28,7 +31,7 @@ router.post('/login', (req, res, next) => {
 });
 
 /* Retrieve the data from the DB when the user is logged in. It shows that data */
-router.get('/profile', async (req, res) => {
+router.get('/profile', userLoggedIn, async (req, res) => {
 	try {
 		/* Import the user email, fullname and the time of creation to show on /profile. It imports the correct title and css too. */
 		const account = require('./../lib/passport');
