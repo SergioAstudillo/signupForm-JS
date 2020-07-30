@@ -3,13 +3,12 @@
 		{{#if user}}
 		<h1 class="card__title">Here is your profile information:</h1>
 		<div class="card__paragraph--wrapper">
-			<p class="card__paragraph">This is your email:</p><span class="card__data">{{account.email}}</span>
+			<p class="card__paragraph">This is your email:</p><span class="card__data card__data--email">{{account.email}}</span>
 			<p class="card__paragraph">This is your fullname:</p><span class="card__data card__data--fullname">{{account.fullname}}</span>
 			<p class="card__paragraph">You created your profile:</p><span class="card__data">{{account.creationDate}}</span>
 		</div>
-		<div class="button form__submitButton--container"> 
-			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
-			<button class="form__submitButton--left" type="button" onclick="">Change data</button>
+		<div class="button form__submitButton--container">
+			<button class="form__submitButton--left" type="button" onclick="window.location.href='/profile/edit'">Change data</button>
 			<button class="form__submitButton--right" type="button" onclick="logOutAlert();">Log out</button>
 		</div>
 		{{/if}}
@@ -18,16 +17,16 @@
 
 <script>
 	function logOutAlert(){
-	Swal.fire({
-	title: 'Are you sure you want to log out?',
-	text: 'You will have to log in again to access your profile.',
-	icon: 'warning',
-	showCancelButton: true,
-	showConfirmButton: true,
-	confirmButtonColor: '#c03a2bd5',
-	confirmButtonText: 'Yes, I want to log out.',
-	cancelButtonText: 'No, I want to stay.',
-	focusCancel: 'true',
-	}).then((result) => { if (result.value) window.location.href='/logout'; })
+		Swal.fire({
+		title: 'Are you sure you want to log out?',
+		text: 'You will have to log in again to access your profile.',
+		icon: 'warning',
+		showCancelButton: true,
+		showConfirmButton: true,
+		confirmButtonColor: '#c03a2bd5',
+		confirmButtonText: 'Yes, I want to log out.',
+		cancelButtonText: 'No, I want to stay.',
+		focusCancel: 'true',
+		}).then((result) => { if (result.value) window.location.href='/logout'; })
 	}
 </script>

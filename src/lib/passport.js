@@ -57,12 +57,20 @@ passport.use(
 			};
 			newUser.password = await helpers.encryptPassword(password);
 			try {
+				if (newUser.email.length > 0) {
+					/* Checks if that email is available */
+					const emailChecker = await pool.query('SELECT email FROM users WHERE email= ?', [newUser.email]);
+					console.log(emailChecker.length > 0);
+					if (emailChecker.length > 0) {
+						throw new Error('You tried to use an already used email address in our DB. Please, use another email.');
+					}
+				}
 				const result = await pool.query('INSERT INTO users set ?', [newUser]);
 				newUser.id = result.insertId;
 				return done(null, newUser, req.flash('successSignup', newUser.email));
 			} catch (err) {
 				console.error(err);
-				console.error('There has been an error inserting the data in the DB');
+				console.error('There has been an error inserting the data in the DB.');
 			}
 		},
 	),

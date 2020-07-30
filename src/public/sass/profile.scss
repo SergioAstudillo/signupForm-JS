@@ -59,12 +59,13 @@ body {
             }
     
             span.card__data{
-                display: flex;
-                flex-flow: column wrap;
-                justify-content: center;
-                align-items: center;
-                font-size: 1rem;
+                width: 100%;
+                display: block;
                 text-align: center;
+                // flex-flow: column wrap;
+                // justify-content: center;
+                // align-items: center;
+                font-size: 1rem;
                 text-transform: none;
                 margin-bottom: 1rem;
                 font-style: italic;

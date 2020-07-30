@@ -1,0 +1,17 @@
+<div class="card__container">
+	<div class="card">
+		{{#if user}}
+		<h1 class="card__title">Click an item to change it's value permanently</h1>
+		<div class="card__paragraph--wrapper">
+			<p class="card__paragraph">This is your email:</p><span class="card__data card__data--email">{{account.email}}</span>
+			<p class="card__paragraph">This is your fullname:</p><span class="card__data card__data--fullname">{{account.fullname}}</span>
+			<p class="card__paragraph">You created your profile:</p><span class="card__data">{{account.creationDate}}</span>
+		</div>
+		<div class="button form__submitButton--container">
+			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
+			<button class="form__submitButton--left" type="button" onclick="">Change data</button>
+			<button class="form__submitButton--right" type="button" onclick="window.location.href='/profile'">Go back to your profile</button>
+		</div>
+		{{/if}}
+	</div>
+</div>

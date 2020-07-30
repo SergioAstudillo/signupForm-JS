@@ -61,7 +61,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Global variables */
-//Creation of the 3 possible flash messages.
+//Creation of the flash messages.
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
 	app.locals.successSignup = req.flash('successSignup');
