@@ -58,11 +58,12 @@ passport.use(
 			newUser.password = await helpers.encryptPassword(password);
 			try {
 				if (newUser.email.length > 0) {
-					/* Checks if that email is available */
+					/* Checks if introduced email is available */
 					const emailChecker = await pool.query('SELECT email FROM users WHERE email= ?', [newUser.email]);
-					console.log(emailChecker.length > 0);
 					if (emailChecker.length > 0) {
-						throw new Error('You tried to use an already used email address in our DB. Please, use another email.');
+						/* In case of error, return a done function with nothing, except a flash to tell the user that the email is already used in the DB.
+						It DOESN'T store anything in the DB */
+						return done(null, false, req.flash('usedEmail', 'The email you introduced is already stored in our DB. Please, use a NEW email.'));
 					}
 				}
 				const result = await pool.query('INSERT INTO users set ?', [newUser]);

@@ -52,6 +52,16 @@
 		</script>
 	{{/if}}
 
+	{{#if usedEmail}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: `You can't use that email.`,
+			text: `{{usedEmail}}`,
+		});
+		</script>
+	{{/if}}	
+
 	{{#if incorrectPassword}}
 		<script>
 		Swal.fire({

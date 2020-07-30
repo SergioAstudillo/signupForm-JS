@@ -69,6 +69,7 @@ app.use((req, res, next) => {
 	app.locals.unknownEmail = req.flash('unknownEmail');
 	app.locals.userLoggedIn = req.flash('userLoggedIn');
 	app.locals.userNotLoggedIn = req.flash('userNotLoggedIn');
+	app.locals.usedEmail = req.flash('usedEmail');
 	app.locals.user = req.user;
 	next();
 });
