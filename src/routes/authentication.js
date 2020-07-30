@@ -17,6 +17,7 @@ router.post(
 		failureRedirect: '/signup',
 		successFlash: true,
 		failureFlash: true,
+		session: false,
 	}),
 );
 
