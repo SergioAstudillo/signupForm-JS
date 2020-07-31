@@ -21,7 +21,7 @@ router.get('/logout', (req, res) => {
 	res.redirect('/login');
 });
 
-/* Profile routes are on authentication.js */
+/* POST routes and profile routes are on authentication.js */
 
 //Export router module.
 module.exports = router;

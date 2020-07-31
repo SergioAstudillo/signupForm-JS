@@ -82,6 +82,8 @@ body {
             justify-content: center;
             width: 100%;
             flex-flow: row wrap;
+            margin-bottom: 0;
+
             .form__submitButton--left{
                 display: flex;
                 justify-content: center;
@@ -104,6 +106,7 @@ body {
                     box-shadow: 0 0 1rem $hoverShadow;
                 }
             }
+
             .form__submitButton--right{
                 @extend .form__submitButton--left;
                 background:$redButton;
@@ -113,12 +116,37 @@ body {
                 margin-left: 1rem;
                 margin-right: 1rem;
             }
+
+            .form__submitButton--middle{
+                @extend .form__submitButton--left;
+                //text-shadow: 1px 1px 4px $lightGreyShadow;
+                margin-top: 0.5rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
             .form__submitButton--login{
                 @extend .form__submitButton--left;
                 color: $labelColor;
                 background: $inputColor;
             }
         }
-    }
 
+        .card__note--wrapper {
+            margin: 0;
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            .card__note{
+                @extend .card__paragraph;
+                display: block;
+                margin: 0rem 0 1rem 0;
+                font-size: 0.75rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    }
 }

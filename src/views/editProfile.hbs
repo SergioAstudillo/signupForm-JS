@@ -8,9 +8,13 @@
 			<p class="card__paragraph">You created your profile:</p><span class="card__data">{{account.creationDate}}</span>
 		</div>
 		<div class="button form__submitButton--container">
-			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
-			<button class="form__submitButton--left" type="button" onclick="">Change data</button>
+			<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->			
+			<button class="form__submitButton--left" type="button" onclick="">Change fullname</button>
+			<button class="form__submitButton--middle" type="button" onclick="">Change password</button>
 			<button class="form__submitButton--right" type="button" onclick="window.location.href='/profile'">Go back to your profile</button>
+		</div>
+		<div class="card__note--wrapper">
+			<p class="card__note">We can't show you your actual password due to security measures.</p>
 		</div>
 		{{else}}
 		<h1 class="card__title">Something went wrong. Please, log out and log in again to access this page.</h1>
