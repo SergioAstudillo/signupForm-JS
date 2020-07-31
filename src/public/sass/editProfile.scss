@@ -1,0 +1,278 @@
+//Import variables.
+@import "./var";
+@import "./fonts";
+@import "./functions";
+
+html{
+	min-height: 100%;
+}
+
+body {
+	height: 100%;
+	background: $background;
+	// Fallback for old browsers.
+	background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
+	// Chrome 10-25, Safari 5.1-6.
+	background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
+	font-family: Montserrat;
+}
+
+.card__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+	.card {
+		background: $formColor;
+		border: 0.25rem solid $labelColor;
+		width: 65vw;
+        margin: 17.5vh 17.5vw 0 17.5vw;
+        //TODO: hacer un media query para que en determinados dispositivos se añada un margin-bottom de 25vh.
+		display: flex;
+		flex-flow: column nowrap;
+		border-radius: 1.835rem;
+		box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
+		overflow-wrap: break-word;
+		color: $labelColor;
+
+		.card__title{
+			display: block;
+			margin-left: 0;
+			margin-top: 0;
+			width: 100%;    
+			text-align: center;
+			margin-top: 1.875rem;
+			margin-bottom: 0;
+			font-size: 2.5rem;
+			color: $labelColor;
+			text-decoration: underline;
+			text-transform: uppercase;
+		}
+			
+		.card__paragraph--wrapper{
+			.card__paragraph{
+				margin-top: 0.5rem;
+				margin-bottom: 0;
+				display: block;
+				text-align: center;
+				font-size: 1.5rem;
+				text-transform: uppercase;
+			}
+	
+			span.card__data{
+				width: 100%;
+				display: block;
+				text-align: center;
+				// flex-flow: column wrap;
+				// justify-content: center;
+				// align-items: center;
+				font-size: 1rem;
+				text-transform: none;
+				margin-bottom: 1rem;
+				font-style: italic;
+				.card__data--fullname{
+					text-transform: capitalize;
+				}
+			}
+		}
+		
+		/* Buttons and final note. */
+		.form__submitButton--container{
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			width: 100%;
+			flex-flow: row wrap;
+			margin-bottom: 0;
+
+			.form__submitButton--left{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 3.125rem;
+				width: 15rem;
+				margin-bottom: 1rem;
+				border-radius: 1.5rem;
+				border: 0.188rem solid $labelColor;
+				border-style: solid;
+				transition: box-shadow ease-in-out 0.5s;
+				text-transform: uppercase;
+				margin-left: 1rem;
+				margin-right: 1rem;
+				margin-top: 0.5rem;
+				color: $labelColor;
+				background: #f1c40f;
+				&:hover{
+					cursor: pointer;
+					box-shadow: 0 0 1rem $hoverShadow;
+				}
+			}
+
+			.form__submitButton--right{
+				@extend .form__submitButton--left;
+				background:$redButton;
+				color: rgba(255, 255, 255, 0.8);
+				//text-shadow: 1px 1px 4px $lightGreyShadow;
+				margin-top: 0.5rem;
+				margin-left: 1rem;
+				margin-right: 1rem;
+			}
+
+			.form__submitButton--middle{
+				@extend .form__submitButton--left;
+				//text-shadow: 1px 1px 4px $lightGreyShadow;
+				margin-top: 0.5rem;
+				margin-left: 1rem;
+				margin-right: 1rem;
+			}
+
+			.form__submitButton--login{
+				@extend .form__submitButton--left;
+				color: $labelColor;
+				background: $inputColor;
+			}
+		}
+
+		.card__note--wrapper {
+			margin: 0;
+			position: relative;
+			display: flex;
+			flex-flow: row wrap;
+			width: 100%;
+			.card__note{
+				@extend .card__paragraph;
+				display: block;
+				margin: 0rem 0 1rem 0;
+				font-size: 0.75rem;
+				width: 100%;
+				text-align: center;
+			}
+		}
+
+		/* Password and fullname input */
+		.form__input--container{
+			margin: 0rem 1.35rem 1rem 1rem;
+			margin-right: 1.35rem;
+			//display: none;
+			display:block;
+			position: relative;
+	
+            .form__input{
+                width: 100.55%;
+                padding: 0.313rem 0;
+                border: 0.188rem solid $labelColor;
+                border-radius: 0.8rem;
+                transition: box-shadow ease-in-out 0.5s;
+                display: flex;
+                background: $inputColor;
+                padding-left: 0.7rem;
+                box-sizing: border-box;
+                &::placeholder{
+                    text-transform: uppercase;
+                    font-size: 0.875rem;
+                    color: $labelColor;
+                }
+                &:hover, &:focus{
+                    box-shadow: 0 0 1rem $hoverShadow;
+                }
+            }
+            
+            //Eye button.
+            .eyeContainer{
+                cursor: pointer;
+                position: absolute;
+                right: 0.5%;
+                top: 5%;
+                .fa-eye{
+                    color: $labelColor;
+                    font-size: 1.5rem;
+                }
+                .fa-eye-slash{
+                    display: none;
+                    @extend .fa-eye;
+                }
+            }
+
+            //Clear button.
+            .clearContainer{
+                cursor: pointer;
+                position: absolute;
+                right: 0.9%;
+                top: 15%;
+                .fa-times{
+                    display: none;
+                    color: $labelColor;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+        
+        .form__validation--wrapper{
+            //display: none;
+            display: flex;
+            flex-flow: column nowrap;
+            margin: 0 25% 0 25%;
+            //TODO: media query para que a partir de ciertos píxeles de ancho se cambie el margen.
+            .form__validation--first{
+                margin-top: 1rem;
+                margin-bottom: 0;
+                @include circleBefore(inline-flex, $inputColor);
+                color: $labelColor;
+                font-size: 0.875rem;
+                //Text indent from the second line for better UI in mobile devices.
+                padding-left: 1.5rem;
+                text-indent:-2.25rem;
+            }
+        
+            .form__validation--fourth{
+                @extend .form__validation--third;
+                @include circleBefore(inline-flex, $inputColor);
+            }
+        
+            .form__validation--second{
+                @extend .form__validation--first;
+                margin: 0;
+                @include circleBefore(inline-flex, $inputColor);
+            }
+        
+            .form__validation--third{
+                @extend .form__validation--second;
+                @include circleBefore(inline-flex, $inputColor);
+            }
+
+            .form__validation--fifth{
+                @extend .form__validation--fourth;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+            /* Additional classes to add with JS for dynamic validation. */
+            .form__validation--greenCircle--first{
+                @extend .form__validation--first;
+                @include circleBefore(inline-flex, $validatedButton);
+            }
+
+            .form__validation--greenCircle--second{
+                @extend .form__validation--second;
+                @include circleBefore(inline-flex, $validatedButton);
+            }
+
+            .form__validation--greenCircle--third{
+                @extend .form__validation--third;
+                @include circleBefore(inline-flex, $validatedButton);
+            }
+
+            .form__validation--greenCircle--fourth{
+                @extend .form__validation--fourth;
+                @include circleBefore(inline-flex, $validatedButton);
+            }
+            
+            .form__validation--greenCircle--fifth{
+                @extend .form__validation--fifth;
+                @include circleBefore(inline-flex, $validatedButton);
+            }
+        }
+	}
+}

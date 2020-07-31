@@ -5,15 +5,15 @@ const { userLoggedIn, userNotLoggedIn } = require('./../lib/routesProtection');
 
 /* Routes */
 router.get('/', userNotLoggedIn, (req, res) => {
-	res.render('index', { title: 'Landing Page', css: 'public/css/initialPage.css' });
+	res.render('index', { title: 'Landing Page', css: '/public/css/initialPage.css' });
 });
 
 router.get('/signup', userNotLoggedIn, (req, res) => {
-	res.render('signup', { title: 'Sign-up Form', css: 'public/css/style.css' });
+	res.render('signup', { title: 'Sign-up Form', css: '/public/css/style.css' });
 });
 
 router.get('/login', userNotLoggedIn, (req, res) => {
-	res.render('login', { title: 'Login Form', css: 'public/css/style.css' });
+	res.render('login', { title: 'Login Form', css: '/public/css/style.css' });
 });
 
 router.get('/logout', (req, res) => {

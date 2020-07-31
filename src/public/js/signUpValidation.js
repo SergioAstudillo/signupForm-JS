@@ -57,21 +57,21 @@ function validatePassword() {
 		firstValidationButton.classList.remove('form__validation--greenCircle--first');
 	}
 
-	/* Highlight (OR unhighlight) the FIRST button if the password has 8 characters (OR less than 8 characters). */
+	/* Highlight (OR unhighlight) the SECOND button if the password has 8 characters (OR less than 8 characters). */
 	if (dynamicValidation.value.replace(/\s/g, '').match(minimumNumbers)) {
 		secondValidationButton.classList.add('form__validation--greenCircle--second');
 	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimumNumbers)) {
 		secondValidationButton.classList.remove('form__validation--greenCircle--second');
 	}
 
-	/* Highlight (OR unhighlight) the FIRST button if the password has 8 characters (OR less than 8 characters). */
+	/* Highlight (OR unhighlight) the THIRD button if the password has 8 characters (OR less than 8 characters). */
 	if (dynamicValidation.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
 		thirdValidationButton.classList.add('form__validation--greenCircle--third');
 	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
 		thirdValidationButton.classList.remove('form__validation--greenCircle--third');
 	}
 
-	/* Highlight (OR unhighlight) the FIRST button if the password has 8 characters (OR less than 8 characters). */
+	/* Highlight (OR unhighlight) the FOURTH button if the password has 8 characters (OR less than 8 characters). */
 	if (dynamicValidation.value.replace(/\s/g, '').match(minimumSymbols)) {
 		fourthValidationButton.classList.add('form__validation--greenCircle--fourth');
 	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimumSymbols)) {
@@ -100,7 +100,7 @@ function checkEmail() {
 		emailValidationIncorrect.classList.add('form__validation--noCircle--incorrect');
 		userEmail.value = '';
 		userEmail.focus();
-		console.err(`The email you introduced is invalid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
+		console.error(`The email you introduced is invalid: ${userEmail.value.replace(/\s/g, '').toLowerCase()}`);
 	}
 }
 

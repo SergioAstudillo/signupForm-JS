@@ -4,149 +4,119 @@
 @import "./functions";
 
 html{
-    min-height: 100%;
+	min-height: 100%;
 }
 
 body {
-    height: 100%;
-    background: $background;
-    // Fallback for old browsers.
-    background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
-    // Chrome 10-25, Safari 5.1-6.
-    background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
-    font-family: Montserrat;
+	height: 100%;
+	background: $background;
+	// Fallback for old browsers.
+	background: -webkit-linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%); 
+	// Chrome 10-25, Safari 5.1-6.
+	background: linear-gradient(73deg, rgb(41, 128, 185) 19%, rgb(20, 94, 142) 100%);
+	font-family: Montserrat;
 }
 
 .card__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 
-    .card {
-        background: $formColor;
-        border: 0.25rem solid $labelColor;
-        width: 65vw;
-        margin-top: 25vh;
-        display: flex;
-        flex-flow: column nowrap;
-        border-radius: 1.835rem;
-        box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
-        overflow-wrap: break-word;
-        color: $labelColor;
+	.card {
+		background: $formColor;
+		border: 0.25rem solid $labelColor;
+		width: 65vw;
+		margin-top: 25vh;
+		display: flex;
+		flex-flow: column nowrap;
+		border-radius: 1.835rem;
+		box-shadow: 0 0.25rem 6.25rem rgba(0, 0, 0, 0.25);
+		overflow-wrap: break-word;
+		color: $labelColor;
 
-            .card__title{
-                display: block;
-                margin-left: 0;
-                margin-top: 0;
-                width: 100%;    
-                text-align: center;
-                margin-top: 1.875rem;
-                margin-bottom: 0;
-                font-size: 2.5rem;
-                color: $labelColor;
-                text-decoration: underline;
-                text-transform: uppercase;
-            }
-        .card__paragraph--wrapper{
-            .card__paragraph{
-                margin-top: 0.5rem;
-                margin-bottom: 0;
-                display: block;
-                text-align: center;
-                font-size: 1.5rem;
-                text-transform: uppercase;
-            }
-    
-            span.card__data{
-                width: 100%;
-                display: block;
-                text-align: center;
-                // flex-flow: column wrap;
-                // justify-content: center;
-                // align-items: center;
-                font-size: 1rem;
-                text-transform: none;
-                margin-bottom: 1rem;
-                font-style: italic;
-                .card__data--fullname{
-                    text-transform: capitalize;
-                }
-            }
-        }
-        
+			.card__title{
+				display: block;
+				margin-left: 0;
+				margin-top: 0;
+				width: 100%;    
+				text-align: center;
+				margin-top: 1.875rem;
+				margin-bottom: 0;
+				font-size: 2.5rem;
+				color: $labelColor;
+				text-decoration: underline;
+				text-transform: uppercase;
+			}
+			
+		.card__paragraph--wrapper{
+			.card__paragraph{
+				margin-top: 0.5rem;
+				margin-bottom: 0;
+				display: block;
+				text-align: center;
+				font-size: 1.5rem;
+				text-transform: uppercase;
+			}
+	
+			span.card__data{
+				width: 100%;
+				display: block;
+				text-align: center;
+				// flex-flow: column wrap;
+				// justify-content: center;
+				// align-items: center;
+				font-size: 1rem;
+				text-transform: none;
+				margin-bottom: 1rem;
+				font-style: italic;
+				.card__data--fullname{
+					text-transform: capitalize;
+				}
+			}
+		}
+		
+		/* Buttons and final note. */
+		.form__submitButton--container{
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			width: 100%;
+			flex-flow: row wrap;
+			margin-bottom: 0;
 
-        .form__submitButton--container{
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            width: 100%;
-            flex-flow: row wrap;
-            margin-bottom: 0;
+			.form__submitButton--left{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 3.125rem;
+				width: 15rem;
+				margin-bottom: 1rem;
+				border-radius: 1.5rem;
+				border: 0.188rem solid $labelColor;
+				border-style: solid;
+				transition: box-shadow ease-in-out 0.5s;
+				text-transform: uppercase;
+				margin-left: 1rem;
+				margin-right: 1rem;
+				margin-top: 0.5rem;
+				color: $labelColor;
+				background: #f1c40f;
+				&:hover{
+					cursor: pointer;
+					box-shadow: 0 0 1rem $hoverShadow;
+				}
+			}
 
-            .form__submitButton--left{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 3.125rem;
-                width: 15rem;
-                margin-bottom: 1rem;
-                border-radius: 1.5rem;
-                border: 0.188rem solid $labelColor;
-                border-style: solid;
-                transition: box-shadow ease-in-out 0.5s;
-                text-transform: uppercase;
-                margin-left: 1rem;
-                margin-right: 1rem;
-                margin-top: 0.5rem;
-                color: $labelColor;
-                background: #f1c40f;
-                &:hover{
-                    cursor: pointer;
-                    box-shadow: 0 0 1rem $hoverShadow;
-                }
-            }
-
-            .form__submitButton--right{
-                @extend .form__submitButton--left;
-                background:$redButton;
-                color: rgba(255, 255, 255, 0.8);
-                //text-shadow: 1px 1px 4px $lightGreyShadow;
-                margin-top: 0.5rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
-
-            .form__submitButton--middle{
-                @extend .form__submitButton--left;
-                //text-shadow: 1px 1px 4px $lightGreyShadow;
-                margin-top: 0.5rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
-
-            .form__submitButton--login{
-                @extend .form__submitButton--left;
-                color: $labelColor;
-                background: $inputColor;
-            }
-        }
-
-        .card__note--wrapper {
-            margin: 0;
-            position: relative;
-            display: flex;
-            flex-flow: row wrap;
-            width: 100%;
-            .card__note{
-                @extend .card__paragraph;
-                display: block;
-                margin: 0rem 0 1rem 0;
-                font-size: 0.75rem;
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-    }
+			.form__submitButton--right{
+				@extend .form__submitButton--left;
+				background:$redButton;
+				color: rgba(255, 255, 255, 0.8);
+				//text-shadow: 1px 1px 4px $lightGreyShadow;
+				margin-top: 0.5rem;
+				margin-left: 1rem;
+				margin-right: 1rem;
+			}
+		}
+	}
 }

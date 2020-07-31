@@ -36,7 +36,7 @@ router.get('/profile', userLoggedIn, async (req, res) => {
 	try {
 		/* Import the user email, fullname and the time of creation to show on /profile. It imports the correct title and css too. */
 		const account = require('./../lib/passport');
-		res.render('profile', { title: 'User Profile', css: 'public/css/profile.css', account });
+		res.render('profile', { title: 'User Profile', css: '/public/css/profile.css', account });
 	} catch (err) {
 		console.error(err);
 		console.error('There has been an error loading the /profile page.');
@@ -47,7 +47,7 @@ router.get('/profile/edit', userLoggedIn, (req, res) => {
 	try {
 		/* Import the user email, fullname and the time of creation to show on /profile/edit. It imports the correct title and css too. */
 		const account = require('./../lib/passport');
-		res.render('editProfile', { title: 'Edit user profile', css: '../public/css/profile.css', account });
+		res.render('editProfile', { title: 'Edit user profile', css: '/public/css/editProfile.css', account });
 	} catch (err) {
 		console.error(err);
 		console.error('There has been an error loading the /profile/edit page.');
