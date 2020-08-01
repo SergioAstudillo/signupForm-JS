@@ -61,7 +61,7 @@ body {
             border-radius: 1.5rem;
             border: 0.188rem solid $labelColor;
             border-style: solid;
-            transition: box-shadow ease-in-out 0.5s;
+            transition: box-shadow cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s;
             text-transform: uppercase;
             margin-left: 1rem;
             margin-right: 1rem;

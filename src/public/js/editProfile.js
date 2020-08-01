@@ -4,7 +4,7 @@ const minimumNumbers = /[0-9]/g;
 const minimunLowerANDUpperCaseCharacters = /(?=.*[a-z])(?=.*[A-Z])/g;
 const minimumSymbols = /(?=.*?[#?!@$€%&*\-+.,])/g;
 
-/* Button for sending the data. */
+// Button for sending the data.
 const submitButton = document.querySelector('.form__submitButton--middle');
 
 /* Original regex separated. */
@@ -15,23 +15,28 @@ function checkPassword() {
 
 	//Store the password in a private const and remove the whitespaces.
 	const superSecretPassword = document.querySelector('#inputCurrentPassword').value.replace(/\s/g, '');
-
-	/* If the user password matchs the regex and both passwords are the same it returns true. */
-	if (superSecretPassword.match(fullPasswordPattern) && comparePasswords()) {
-		console.log('Both passwords are valid and identical.');
+	const superSecretNewPassword = document.querySelector('#inputNewPassword').value.replace(/\s/g, '');
+	if (validateBothPasswords(superSecretPassword, superSecretNewPassword, fullPasswordPattern)) {
 		return true;
 	} else {
 		/* If the user entered nothing at the password input the web doesn't ask him to enter data since he doesn't want to change his password. */
-		if (superSecretPassword === '') {
-			return false;
-		}
-		/* In case the passwords aren't valid or identical */
-		console.error('Check the passwords introduced in both inputs.');
-		clearInput();
+		if (superSecretPassword === '' || superSecretNewPassword === '') return false;
+		//clearInput();
 		return false;
 	}
 }
 
+function validateBothPasswords(superSecretPassword, superSecretNewPassword, fullPasswordPattern) {
+	/* If the user passwords matchs the regex it returns true. */
+	if (superSecretPassword.match(fullPasswordPattern) && superSecretNewPassword.match(fullPasswordPattern)) {
+		return true;
+	} else {
+		if (superSecretNewPassword.match(fullPasswordPattern) && !superSecretPassword.match(fullPasswordPattern)) {
+			console.error(`One (or both) password(s) doesn't meet all the validations needed to modify the password(s).`);
+		}
+		return false;
+	}
+}
 /* Function called every time the user introduces an invalid password, it clears the validation buttons and password inputs */
 function clearInput() {
 	const firstValidation = document.querySelector('.form__validation--first');
@@ -63,46 +68,40 @@ function validatePassword() {
 	const fourthValidationButton = document.querySelector('.form__validation--fourth');
 
 	/* Highlight (OR unhighlight) the FIRST button if the password has 8 characters (OR less than 8 characters). */
-	if (dynamicValidation.value.replace(/\s/g, '').match(totalLength)) {
+	if (dynamicValidationNewPassword.value.replace(/\s/g, '').match(totalLength)) {
 		firstValidationButton.classList.add('form__validation--greenCircle--first');
-	} else if (!dynamicValidation.value.replace(/\s/g, '').match(totalLength)) {
+	} else if (!dynamicValidationNewPassword.value.replace(/\s/g, '').match(totalLength)) {
 		firstValidationButton.classList.remove('form__validation--greenCircle--first');
 	}
 
 	/* Highlight (OR unhighlight) the SECOND button if the password has 1 number (OR less than 1 number). */
-	if (dynamicValidation.value.replace(/\s/g, '').match(minimumNumbers)) {
+	if (dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimumNumbers)) {
 		secondValidationButton.classList.add('form__validation--greenCircle--second');
-	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimumNumbers)) {
+	} else if (!dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimumNumbers)) {
 		secondValidationButton.classList.remove('form__validation--greenCircle--second');
 	}
 
 	/* Highlight (OR unhighlight) the THIRD button if the password has 1 uppercase and 1 lowercase character (OR less than 1 uppercase and 1 lowercase character). */
-	if (dynamicValidation.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
+	if (dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
 		thirdValidationButton.classList.add('form__validation--greenCircle--third');
-	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
+	} else if (!dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimunLowerANDUpperCaseCharacters)) {
 		thirdValidationButton.classList.remove('form__validation--greenCircle--third');
 	}
 
 	/* Highlight (OR unhighlight) the FOURTH button if the password has 1 symbol (OR less than 1 symbol). */
-	if (dynamicValidation.value.replace(/\s/g, '').match(minimumSymbols)) {
+	if (dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimumSymbols)) {
 		fourthValidationButton.classList.add('form__validation--greenCircle--fourth');
-	} else if (!dynamicValidation.value.replace(/\s/g, '').match(minimumSymbols)) {
+	} else if (!dynamicValidationNewPassword.value.replace(/\s/g, '').match(minimumSymbols)) {
 		fourthValidationButton.classList.remove('form__validation--greenCircle--fourth');
 	}
-}
-
-/* Compare the passwords typed in both password inputs */
-function comparePasswords() {
 	const fifthValidationButton = document.querySelector('.form__validation--fifth');
 	deleteWhitespacesPasswords();
 
-	/* Highlight (OR unhighlight) the FIFTH button if the password is the same in both inputs (OR not). */
-	if (dynamicValidationNewPassword.value.replace(/\s/g, '') === dynamicValidation.value.replace(/\s/g, '') && dynamicValidation !== '') {
+	/* Highlight (OR unhighlight) the FIFTH button if the password is valid in both inputs (OR not). */
+	if (checkPassword()) {
 		fifthValidationButton.classList.add('form__validation--greenCircle--fifth');
-		return true;
-	} else if (!(dynamicValidationNewPassword.value.replace(/\s/g, '') === dynamicValidation.value.replace(/\s/g, '')) && dynamicValidation !== '') {
+	} else {
 		fifthValidationButton.classList.remove('form__validation--greenCircle--fifth');
-		return false;
 	}
 }
 
@@ -113,14 +112,10 @@ function deleteWhitespacesPasswords() {
 }
 
 /* Event listener for dynamic password typing validation. */
+dynamicValidationNewPassword.addEventListener('keydown', validatePassword);
+dynamicValidationNewPassword.addEventListener('keyup', validatePassword);
 dynamicValidation.addEventListener('keydown', validatePassword);
 dynamicValidation.addEventListener('keyup', validatePassword);
-
-/* Event listener for checking if the 2 passwords are the exact same. */
-dynamicValidationNewPassword.addEventListener('keydown', comparePasswords);
-dynamicValidation.addEventListener('keydown', comparePasswords);
-dynamicValidationNewPassword.addEventListener('keyup', comparePasswords);
-dynamicValidation.addEventListener('keyup', comparePasswords);
 
 /* Fullname validation. */
 function checkFullname() {
@@ -215,6 +210,7 @@ function showData() {
 		formPasswordContainer.style.display = 'block';
 		formValidationContainer.style.display = 'flex';
 		sendDataButton.style.display = 'flex';
+		inputFullname.focus();
 		defaultStateData = false;
 		hideORShowButton.innerHTML = 'Hide inputs';
 		/* If the data is BEING DISPLAYED it executes this piece of code. */
@@ -223,6 +219,7 @@ function showData() {
 		formPasswordContainer.style.display = 'none';
 		formValidationContainer.style.display = 'none';
 		sendDataButton.style.display = 'none';
+		hideORShowButton.blur();
 		defaultStateData = true;
 		hideORShowButton.innerHTML = 'Show inputs';
 	}
