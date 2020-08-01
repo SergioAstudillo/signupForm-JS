@@ -2,25 +2,26 @@
 	<div class="card">
 		{{#if account}}
 		<form action="/profile/edit" method="post">
-			<h1 class="card__title">Click an item to change it's value permanently</h1>
+			<h1 class="card__title">Choose an item to change it's value permanently</h1>
 			<div class="card__paragraph--wrapper">
 
 				<p class="card__paragraph">This is your account email:</p><span class="card__data card__data--email">{{account.email}}</span>
 				<p class="card__paragraph">This is your actual fullname:</p><span class="card__data card__data--fullname">{{account.fullname}}</span>
-				<div class="input form__input--container">
+				<div class="input form__input--container form__input--fullnameContainer">
 
-					<input class="form__input form__input" id="inputFullname" type="text" name="fullnameInput" placeholder="First Name AND Surname" maxlength="50" required=""><span class="clearContainer"><i class="fas fa-times" id="clear" onclick="clearButton();"></i></span>
-
+					<input class="form__input" id="inputFullname" type="text" name="fullnameInput" placeholder="First Name AND Surname" maxlength="50">
+					<span class="clearContainer">
+						<i class="fas fa-times" id="clear" onclick="clearButton();"></i>
+					</span>
 				</div>
+				<div class="input form__input--container form__input--passwordContainer">
 
-				<div class="input form__input--container">
-
-					<input class="form__input form__input" id="inputCurrentPassword" type="password" name="passwordInput" placeholder="Current password" maxlength="30" required="">
+					<input class="form__input" id="inputCurrentPassword" type="password" name="passwordInput" placeholder="Current password" maxlength="30">
 						<span class="eyeContainer">
 							<i class="far fa-eye" id="eye-show" onclick="eyeButton();"></i><i class="far fa-eye-slash" id="eye-hide" onclick="eyeButton();"></i>
 						</span>
 					<br>
-					<input class="form__input form__input" id="inputNewPassword" type="password" name="passwordInput" placeholder="New password" maxlength="30" required="">
+					<input class="form__input" id="inputNewPassword" type="password" name="passwordInput" placeholder="New password" maxlength="30">
 
 				</div>
 				<div class="form__validation--wrapper">
@@ -37,8 +38,8 @@
 			<div class="button form__submitButton--container">
 
 				<!--TODO: MAKE THIS BUTTONS FUNCTIONAL WITH SQL AND JS.-->
-				<button class="form__submitButton--left" type="button" onclick="submitData();">Change fullname</button>
-				<button class="form__submitButton--middle" type="button" onclick="submitData();">Change password</button>
+				<button class="form__submitButton--left" type="button" onclick="showData();">Show inputs</button>
+				<button class="form__submitButton--middle" type="button" onclick="submitData();">Change profile information</button>
 				<button class="form__submitButton--right" type="button" onclick="window.location.href='/profile'">Go back to your profile</button>
 
 			</div>
@@ -54,4 +55,3 @@
 		{{/if}}
 	</div>
 </div>
-

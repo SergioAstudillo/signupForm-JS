@@ -21,15 +21,15 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    flex-direction: column;
-    width: 100%;
+	flex-direction: column;
+	width: 100%;
 
 	.card {
 		background: $formColor;
 		border: 0.25rem solid $labelColor;
 		width: 65vw;
-        margin: 17.5vh 17.5vw 0 17.5vw;
-        //TODO: hacer un media query para que en determinados dispositivos se añada un margin-bottom de 25vh.
+		margin: 17.5vh 17.5vw 0 17.5vw;
+		//TODO: hacer un media query para que en determinados dispositivos se añada un margin-bottom de 25vh.
 		display: flex;
 		flex-flow: column nowrap;
 		border-radius: 1.835rem;
@@ -103,11 +103,12 @@ body {
 				margin-right: 1rem;
 				margin-top: 0.5rem;
 				color: $labelColor;
-				background: #f1c40f;
-				&:hover{
+				background: $inputColor;
+				&:hover, &:focus{
 					cursor: pointer;
 					box-shadow: 0 0 1rem $hoverShadow;
-				}
+					outline: none;
+				}		
 			}
 
 			.form__submitButton--right{
@@ -118,6 +119,7 @@ body {
 				margin-top: 0.5rem;
 				margin-left: 1rem;
 				margin-right: 1rem;
+				//Cambiar a hide una vez pulsado.
 			}
 
 			.form__submitButton--middle{
@@ -126,7 +128,11 @@ body {
 				margin-top: 0.5rem;
 				margin-left: 1rem;
 				margin-right: 1rem;
-			}
+				background: $warningButton;
+				display: none;
+				//TODO: enseñar cuando se haya realizado la comprobación.
+							
+			}	
 
 			.form__submitButton--login{
 				@extend .form__submitButton--left;
@@ -154,125 +160,147 @@ body {
 		/* Password and fullname input */
 		.form__input--container{
 			margin: 0rem 1.35rem 1rem 1rem;
-			margin-right: 1.35rem;
-			//display: none;
-			display:block;
+			display: none;
+			//display:block;
 			position: relative;
-	
-            .form__input{
-                width: 100.55%;
-                padding: 0.313rem 0;
-                border: 0.188rem solid $labelColor;
-                border-radius: 0.8rem;
-                transition: box-shadow ease-in-out 0.5s;
-                display: flex;
-                background: $inputColor;
-                padding-left: 0.7rem;
-                box-sizing: border-box;
-                &::placeholder{
-                    text-transform: uppercase;
-                    font-size: 0.875rem;
-                    color: $labelColor;
-                }
-                &:hover, &:focus{
-                    box-shadow: 0 0 1rem $hoverShadow;
-                }
-            }
-            
-            //Eye button.
-            .eyeContainer{
-                cursor: pointer;
-                position: absolute;
-                right: 0.5%;
-                top: 5%;
-                .fa-eye{
-                    color: $labelColor;
-                    font-size: 1.5rem;
-                }
-                .fa-eye-slash{
-                    display: none;
-                    @extend .fa-eye;
-                }
-            }
 
-            //Clear button.
-            .clearContainer{
-                cursor: pointer;
-                position: absolute;
-                right: 0.9%;
-                top: 15%;
-                .fa-times{
-                    display: none;
-                    color: $labelColor;
-                    font-size: 1.5rem;
-                }
-            }
-        }
-        
-        .form__validation--wrapper{
-            //display: none;
-            display: flex;
-            flex-flow: column nowrap;
-            margin: 0 25% 0 25%;
-            //TODO: media query para que a partir de ciertos píxeles de ancho se cambie el margen.
-            .form__validation--first{
-                margin-top: 1rem;
-                margin-bottom: 0;
-                @include circleBefore(inline-flex, $inputColor);
-                color: $labelColor;
-                font-size: 0.875rem;
-                //Text indent from the second line for better UI in mobile devices.
-                padding-left: 1.5rem;
-                text-indent:-2.25rem;
-            }
-        
-            .form__validation--fourth{
-                @extend .form__validation--third;
-                @include circleBefore(inline-flex, $inputColor);
-            }
-        
-            .form__validation--second{
-                @extend .form__validation--first;
-                margin: 0;
-                @include circleBefore(inline-flex, $inputColor);
-            }
-        
-            .form__validation--third{
-                @extend .form__validation--second;
-                @include circleBefore(inline-flex, $inputColor);
-            }
+			.form__input--fullnameContainer{
+				display: none;
+			}
+			.form__input--passwordContainer{
+				display: none;
+			}
+			
+			.form__input{
+				width: 100.55%;
+				padding: 0.313rem 0;
+				border: 0.188rem solid $labelColor;
+				border-radius: 0.8rem;
+				transition: box-shadow ease-in-out 0.5s;
+				display: flex;
+				background: $inputColor;
+				padding-left: 0.7rem;
+				box-sizing: border-box;
+				&::placeholder{
+					text-transform: uppercase;
+					font-size: 0.875rem;
+					color: $labelColor;
+				}
+				&:hover, &:focus{
+					box-shadow: 0 0 1rem $hoverShadow;
+					outline: none;
+				}
 
-            .form__validation--fifth{
-                @extend .form__validation--fourth;
-                margin-top: 0;
-                margin-bottom: 1rem;
-            }
+				.form__validation--first{
+					margin-bottom: 0;
+					margin-top: 0;
+				}
 
-            /* Additional classes to add with JS for dynamic validation. */
-            .form__validation--greenCircle--first{
-                @extend .form__validation--first;
-                @include circleBefore(inline-flex, $validatedButton);
-            }
+				.form__validation--second{
+					margin-bottom: 0;
+					margin-top: 0;
+				}
 
-            .form__validation--greenCircle--second{
-                @extend .form__validation--second;
-                @include circleBefore(inline-flex, $validatedButton);
-            }
+				.form__validation--third{
+					margin-bottom: 0;
+					margin-top: 0;
+				}
+			}
+			
+			//Eye button.
+			.eyeContainer{
+				cursor: pointer;
+				position: absolute;
+				right: 0.5%;
+				top: 5%;
+				.fa-eye{
+					color: $labelColor;
+					font-size: 1.5rem;
+				}
+				.fa-eye-slash{
+					display: none;
+					@extend .fa-eye;
+				}
+			}
 
-            .form__validation--greenCircle--third{
-                @extend .form__validation--third;
-                @include circleBefore(inline-flex, $validatedButton);
-            }
+			//Clear button.
+			.clearContainer{
+				cursor: pointer;
+				position: absolute;
+				right: 0.9%;
+				top: 15%;
+				.fa-times{
+					display: none;
+					color: $labelColor;
+					font-size: 1.5rem;
+				}
+			}
+		}
+		
+		.form__validation--wrapper{
+			display: none;
+			//display: flex;
+			flex-flow: column nowrap;
+			margin: 0 25% 0 25%;
+			//TODO: media query para que a partir de ciertos píxeles de ancho se cambie el margen.
+			.form__validation--first{
+				margin-top: 1rem;
+				margin-bottom: 0;
+				@include circleBefore(inline-flex, $inputColor);
+				color: $labelColor;
+				font-size: 0.875rem;
+				//Text indent from the second line for better UI in mobile devices.
+				padding-left: 1.5rem;
+				text-indent:-2.25rem;
+			}
+		
+			.form__validation--fourth{
+				@extend .form__validation--third;
+				@include circleBefore(inline-flex, $inputColor);
+			}
+		
+			.form__validation--second{
+				@extend .form__validation--first;
+				margin: 0;
+				@include circleBefore(inline-flex, $inputColor);
+			}
+		
+			.form__validation--third{
+				@extend .form__validation--second;
+				@include circleBefore(inline-flex, $inputColor);
+			}
 
-            .form__validation--greenCircle--fourth{
-                @extend .form__validation--fourth;
-                @include circleBefore(inline-flex, $validatedButton);
-            }
-            
-            .form__validation--greenCircle--fifth{
-                @extend .form__validation--fifth;
-                @include circleBefore(inline-flex, $validatedButton);
-            }
-        }
+			.form__validation--fifth{
+				@extend .form__validation--fourth;
+				margin-top: 0;
+				margin-bottom: 1rem;
+			}
+
+			/* Additional classes to add with JS for dynamic validation. */
+			.form__validation--greenCircle--first{
+				@extend .form__validation--first;
+				@include circleBefore(inline-flex, $validatedButton);
+			}
+
+			.form__validation--greenCircle--second{
+				@extend .form__validation--second;
+				@include circleBefore(inline-flex, $validatedButton);
+			}
+
+			.form__validation--greenCircle--third{
+				@extend .form__validation--third;
+				@include circleBefore(inline-flex, $validatedButton);
+			}
+
+			.form__validation--greenCircle--fourth{
+				@extend .form__validation--fourth;
+				@include circleBefore(inline-flex, $validatedButton);
+			}
+
+			.form__validation--greenCircle--fifth{
+				@extend .form__validation--fifth;
+				@include circleBefore(inline-flex, $validatedButton);
+			}
+		}
 	}
 }

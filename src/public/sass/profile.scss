@@ -102,9 +102,10 @@ body {
 				margin-top: 0.5rem;
 				color: $labelColor;
 				background: #f1c40f;
-				&:hover{
+				&:hover, &:focus{
 					cursor: pointer;
 					box-shadow: 0 0 1rem $hoverShadow;
+					outline: none;
 				}
 			}
 

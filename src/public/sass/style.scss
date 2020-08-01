@@ -78,6 +78,7 @@ body {
         }
         &:hover, &:focus{
             box-shadow: 0 0 1rem $hoverShadow;
+            outline: none;
         }
     }
 
@@ -182,9 +183,10 @@ body {
             transition: box-shadow ease-in-out 0.5s;
             text-transform: uppercase;
             color: $labelColor;
-            &:hover{
+            &:hover, &:focus{
                 cursor: pointer;
                 box-shadow: 0 0 1rem $hoverShadow;
+                outline: none;
             }
         }
     }
