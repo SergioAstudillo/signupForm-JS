@@ -102,6 +102,7 @@ body {
 				margin-top: 0.5rem;
 				color: $labelColor;
 				background: #f1c40f;
+				text-shadow: 1px 1px 4px $lightGreyShadow;
 				&:hover, &:focus{
 					cursor: pointer;
 					box-shadow: 0 0 1rem $hoverShadow;

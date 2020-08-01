@@ -67,6 +67,7 @@ body {
             margin-right: 1rem;
             margin-top: 0.5rem;
             color: $labelColor;
+            text-shadow: 1px 1px 4px $lightGreyShadow;
             &:hover{
                 cursor: pointer;
                 box-shadow: 0 0 1rem $hoverShadow;

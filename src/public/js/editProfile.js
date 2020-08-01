@@ -13,7 +13,7 @@ function checkPassword() {
 	//Pattern creation. Minimum 8 characters, 1 UpperCase, 1 lowercase, 1 number and 1 of the indicated symbols.
 	const fullPasswordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.{1,}?[0-9])(?=.*?[#?!@$€%&*\-+.,]).{8,30}$/g;
 
-	//Store the password in a private const and remove the whitespaces.
+	//Store the password in a private const and remove the possible whitespaces.
 	const superSecretPassword = document.querySelector('#inputCurrentPassword').value.replace(/\s/g, '');
 	const superSecretNewPassword = document.querySelector('#inputNewPassword').value.replace(/\s/g, '');
 	if (validateBothPasswords(superSecretPassword, superSecretNewPassword, fullPasswordPattern)) {
@@ -21,7 +21,6 @@ function checkPassword() {
 	} else {
 		/* If the user entered nothing at the password input the web doesn't ask him to enter data since he doesn't want to change his password. */
 		if (superSecretPassword === '' || superSecretNewPassword === '') return false;
-		//clearInput();
 		return false;
 	}
 }
@@ -36,24 +35,6 @@ function validateBothPasswords(superSecretPassword, superSecretNewPassword, full
 		}
 		return false;
 	}
-}
-/* Function called every time the user introduces an invalid password, it clears the validation buttons and password inputs */
-function clearInput() {
-	const firstValidation = document.querySelector('.form__validation--first');
-	const secondValidation = document.querySelector('.form__validation--second');
-	const thirdValidation = document.querySelector('.form__validation--third');
-	const fourthValidation = document.querySelector('.form__validation--fourth');
-	const fifthValidation = document.querySelector('.form__validation--fifth');
-
-	firstValidation.classList.remove('form__validation--greenCircle--first');
-	secondValidation.classList.remove('form__validation--greenCircle--second');
-	thirdValidation.classList.remove('form__validation--greenCircle--third');
-	fourthValidation.classList.remove('form__validation--greenCircle--fourth');
-	fifthValidation.classList.remove('form__validation--greenCircle--fifth');
-
-	document.getElementById('inputCurrentPassword').value = '';
-	document.getElementById('inputNewPassword').value = '';
-	document.getElementById('inputCurrentPassword').focus();
 }
 
 /* Selectors for both password inputs */
@@ -105,7 +86,7 @@ function validatePassword() {
 	}
 }
 
-/* If the user types a whitespace in the password field it automatically removes it. */
+/* If the user types a whitespace in the password fields it automatically removes it. */
 function deleteWhitespacesPasswords() {
 	dynamicValidationNewPassword.value = dynamicValidationNewPassword.value.replace(/\s/g, '');
 	dynamicValidation.value = dynamicValidation.value.replace(/\s/g, '');
@@ -170,7 +151,7 @@ inputFullname.addEventListener('focusout', () => {
 	}, 500);
 });
 
-// Clear the fullname input when you press the button.
+/* Clear the fullname input when you press the button. */
 function clearButton() {
 	inputFullname.value = '';
 }

@@ -183,6 +183,7 @@ body {
             transition: box-shadow cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s;
             text-transform: uppercase;
             color: $labelColor;
+            text-shadow: 1px 1px 4px $lightGreyShadow;
             &:hover, &:focus{
                 cursor: pointer;
                 box-shadow: 0 0 1rem $hoverShadow;
