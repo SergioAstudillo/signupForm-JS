@@ -104,6 +104,7 @@ body {
 				margin-top: 0.5rem;
 				color: $labelColor;
 				background: $inputColor;
+				text-shadow: 1px 1px 4px $lightGreyShadow;
 				&:hover, &:focus{
 					cursor: pointer;
 					box-shadow: 0 0 1rem $hoverShadow;
@@ -124,21 +125,13 @@ body {
 
 			.form__submitButton--middle{
 				@extend .form__submitButton--left;
-				//text-shadow: 1px 1px 4px $lightGreyShadow;
+				text-shadow: 1px 1px 4px $lightGreyShadow;
 				margin-top: 0.5rem;
 				margin-left: 1rem;
 				margin-right: 1rem;
 				background: $warningButton;
 				display: none;
-				//TODO: enseñar cuando se haya realizado la comprobación.
-							
 			}	
-
-			.form__submitButton--login{
-				@extend .form__submitButton--left;
-				color: $labelColor;
-				background: $inputColor;
-			}
 		}
 
 		.card__note--wrapper {

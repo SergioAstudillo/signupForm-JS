@@ -19,7 +19,6 @@ const passport = require('passport');
 const MySQLStore = require('express-mysql-session');
 //Import the database from keys.js
 const { database } = require('./keys.js');
-//TODO: check if this line is necessary.
 require('./lib/passport');
 //Import .env
 require('dotenv').config();

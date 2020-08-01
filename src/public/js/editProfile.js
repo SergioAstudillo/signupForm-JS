@@ -94,6 +94,7 @@ function validatePassword() {
 /* Compare the passwords typed in both password inputs */
 function comparePasswords() {
 	const fifthValidationButton = document.querySelector('.form__validation--fifth');
+	deleteWhitespacesPasswords();
 
 	/* Highlight (OR unhighlight) the FIFTH button if the password is the same in both inputs (OR not). */
 	if (dynamicValidationNewPassword.value.replace(/\s/g, '') === dynamicValidation.value.replace(/\s/g, '') && dynamicValidation !== '') {
@@ -105,10 +106,10 @@ function comparePasswords() {
 	}
 }
 
-/* TODO: If the user types a whitespace in the password field it automatically removes it. */
-function deleteWhitespaces() {
-	dynamicValidationNewPassword.value.replace(/\s/g, '');
-	dynamicValidation.value.replace(/\s/g, '');
+/* If the user types a whitespace in the password field it automatically removes it. */
+function deleteWhitespacesPasswords() {
+	dynamicValidationNewPassword.value = dynamicValidationNewPassword.value.replace(/\s/g, '');
+	dynamicValidation.value = dynamicValidation.value.replace(/\s/g, '');
 }
 
 /* Event listener for dynamic password typing validation. */
@@ -130,7 +131,7 @@ function checkFullname() {
 
 	/* If the fullname input match the regex it returns true. */
 	if (correctedFullname.match(fullnamePattern)) {
-		console.log(`The fullname you introduced is valid: ${userFullname.value.toLowerCase()}`);
+		console.log(`The fullname you introduced is valid.`);
 		userFullname.value = correctedFullname;
 		return true;
 	} else {
@@ -141,7 +142,7 @@ function checkFullname() {
 		/* If the fullname is not valid this clears the input and tells the user that it isn't valid. */
 		userFullname.value = '';
 		userFullname.focus();
-		console.error(`The fullname you introduced is invalid: ${userFullname.value.toLowerCase()}`);
+		console.error(`The fullname you introduced is invalid.`);
 		return false;
 	}
 }
@@ -174,7 +175,7 @@ inputFullname.addEventListener('focusout', () => {
 	}, 500);
 });
 
-//TODO: Clear the fullname input when you press the button.
+// Clear the fullname input when you press the button.
 function clearButton() {
 	inputFullname.value = '';
 }
