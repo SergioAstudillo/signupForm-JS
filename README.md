@@ -1,17 +1,17 @@
-<u><h1>SignUp + LogIn FORM</h1></u>
+# SignUp + LogIn FORM
 
 This is my _first_ **FULLSTACK** project 💻
 
-<u><h3>Description:</h3></u>
+### Description:
 
 It's a signup and login web (with password and email **validation** in both **frontend and backend**):
 
 * The web **automatically validates** the password in a dynamic way in the /signup page and in the /profile/edit page. If the validation isn't completed the user can't send the data.
-<center><em><u>Before validation:</u></em></center>
+**_Before validation:_**
 
 ![Photo can't be loaded.](https://imgur.com/W4cIEhC.jpeg)
 
-<center><em><u><b>After validation:</b></u></em></center>
+**_After validation:_**
 
 ![Photo can't be loaded.](https://imgur.com/Rng7VxJ.jpeg)
 
@@ -29,7 +29,7 @@ It's a signup and login web (with password and email **validation** in both **fr
 * The project has more small details that you can check for yourself.
 * Feel free to contact me on Twitter if you want to talk about this project or something else: [My twitter.](https://twitter.com/SergioAstGonz)
 
-<u><h3>Things to do before trying out the project:</h3></u>
+### Things to do before trying out the project:
 
 1. **Install MySQL** in your computer.
 2. Use the command `npm i` to install all the necessary node modules.
@@ -44,7 +44,7 @@ It's a signup and login web (with password and email **validation** in both **fr
 
 Once you did all this you can **start using the project** with no problems.
 
-<u><h3>Technologies used:</h3></u>
+### Technologies used:
 
 * **Handlebars** (_HTML_)
 * **SaSS/ScSS** (_CSS3_)
@@ -52,13 +52,13 @@ Once you did all this you can **start using the project** with no problems.
 * **Node.JS**
 * **MySQL** (_SQL_)
 
-<u><h3>Libraries/frameworks:</h3></u>
+### Libraries/frameworks:
 
 * **FontAwesome** for the icons.
 * **SweetAlert2** for the alerts.
 * **NormalizeCSS** for adapting the webpage to all browsers.
 
-<u><h3>Node.JS modules used for development:</h3></u>
+### Node.JS modules used for development:
 
 * Express.
 * Express-mysql-session
