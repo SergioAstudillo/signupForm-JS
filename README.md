@@ -7,6 +7,7 @@ This is my _first_ **FULLSTACK** project 💻
 It's a signup and login web (with password and email **validation** in both **frontend and backend**):
 
 * The web **automatically validates** the password in a dynamic way in the /signup page and in the /profile/edit page. If the validation isn't completed the user can't send the data.
+  
 **_Before validation:_**
 
 ![Photo can't be loaded.](https://imgur.com/W4cIEhC.jpeg)
