@@ -69,6 +69,11 @@ app.use((req, res, next) => {
 	app.locals.userLoggedIn = req.flash('userLoggedIn');
 	app.locals.userNotLoggedIn = req.flash('userNotLoggedIn');
 	app.locals.usedEmail = req.flash('usedEmail');
+	app.locals.bothUpdated = req.flash('bothUpdated');
+	app.locals.onlyFullnameUpdated = req.flash('onlyFullnameUpdated');
+	app.locals.onlyPasswordUpdated = req.flash('onlyPasswordUpdated');
+	app.locals.nothingUpdated = req.flash('nothingUpdated');
+	app.locals.moreThanOneUser = req.flash('moreThanOneUser');
 	app.locals.user = req.user;
 	next();
 });

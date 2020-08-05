@@ -1,16 +1,20 @@
 <div class="card__container">
 	<div class="card">
-		{{#if user}}
+		{{#if account}}
 		<h1 class="card__title">Here is your profile information:</h1>
 		<div class="card__paragraph--wrapper">
-			<p class="card__paragraph">This is your email:</p><span class="card__data card__data--email">{{account.email}}</span>
-			<p class="card__paragraph">This is your fullname:</p><span class="card__data card__data--fullname">{{account.fullname}}</span>
+			<p class="card__paragraph">This is your email:</p><span class="card__data card__data--email">{{user.email}}</span>
+			<p class="card__paragraph">This is your fullname:</p><span class="card__data card__data--fullname">{{user.fullname}}</span>
+			{{#if account.creationDate}}
 			<p class="card__paragraph">You created your profile:</p><span class="card__data">{{account.creationDate}}</span>
+			{{/if}}
 		</div>
 		<div class="button form__submitButton--container">
 			<button class="form__submitButton--left" type="button" onclick="window.location.href='/profile/edit'">Change data</button>
 			<button class="form__submitButton--right" type="button" onclick="logOutAlert();">Log out</button>
 		</div>
+		{{else}}
+		<h1 class="card__title">Something went wrong. Please, log out and log in again to access this page.</h1>
 		{{/if}}
 	</div>
 </div>

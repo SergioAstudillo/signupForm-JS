@@ -117,10 +117,9 @@ body {
         @include circleBefore(inline-flex, $inputColor);
         color: $labelColor;
         font-size: 0.875rem;
-        //Text indent from the second line for better UI in mobile devices.
         padding-left: 1.5rem;
-        //Previous data: text-indent:-1.5rem;
-        text-indent:-2.25rem;
+        //Text indent from the second line for better UI in mobile devices.
+        text-indent:-1.5rem;
     }
 
     .form__validation--fourth{

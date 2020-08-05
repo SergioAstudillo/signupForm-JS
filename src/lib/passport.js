@@ -4,6 +4,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../database');
 const helpers = require('./helpers');
 const time = require('./timeago');
+/* REGEX for validations. */
+const fullPasswordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.{1,}?[0-9])(?=.*?[#?!@$€%&*\-+.,]).{8,30}$/g;
+const fullnamePattern = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/i;
 
 /* Login validation. */
 passport.use(
@@ -65,13 +68,106 @@ passport.use(
 						It DOESN'T store anything in the DB */
 						return done(null, false, req.flash('usedEmail', 'The email you introduced is already stored in our DB. Please, use a NEW email.'));
 					}
+					if (password.match(fullPasswordPattern)) {
+						const result = await pool.query('INSERT INTO users set ?', [newUser]);
+						newUser.id = result.insertId;
+						return done(null, newUser, req.flash('successSignup', newUser.email));
+					} else {
+						throw new Error(`The password isn't valid.`);
+					}
 				}
-				const result = await pool.query('INSERT INTO users set ?', [newUser]);
-				newUser.id = result.insertId;
-				return done(null, newUser, req.flash('successSignup', newUser.email));
 			} catch (err) {
 				console.error(err);
 				console.error('There has been an error inserting the data in the DB.');
+			}
+		},
+	),
+);
+
+/* Edit profile with password encryption. */
+passport.use(
+	'local.profileEdit',
+	new LocalStrategy(
+		{
+			usernameField: 'fullnameInput',
+			passwordField: 'newPasswordInput',
+			passReqToCallback: true,
+		},
+		async (req, fullname, newPassword, done) => {
+			/* Make constants to use later in the function. */
+			const currentPassword = req.body.currentPasswordInput;
+			const userID = req.user.id;
+			// SELECT the user that is currently logged in.
+			const entry = await pool.query('SELECT * FROM users WHERE id = ?', [userID]);
+			/* If the query found the user (it should do) it will execute this if: */
+			if (entry.length > 0) {
+				// We store the first entry retrieved from the DB to use it as "user".
+				const user = entry[0];
+				/* If the user introduced some valid data in the fullname OR password/s field/s it will execute this if: */
+				if ((fullname.length > 0 && fullname.match(fullnamePattern)) || (newPassword.length > 0 && currentPassword.length > 0 && newPassword.match(fullPasswordPattern) && currentPassword.match(fullPasswordPattern))) {
+					/* Creation of global variables to detect if the fullname and password has been saved. */
+					var fullnameOK = true;
+					var passwordOK = true;
+					/* If the user introduced a fullname and it matches the fullname REGEX: */
+					if (fullname.length > 0 && fullname.match(fullnamePattern)) {
+						try {
+							//Update the fullname in the DB
+							const updateFullnameQuery = await pool.query(`UPDATE users SET fullname='${fullname}' WHERE id='${userID}'`);
+							//Update the fullname of the logged user.
+							req.user.fullname = fullname;
+							//Maintain the var with a true value, to let the program know the fullname has been updated.
+							fullnameOK = true;
+						} catch (err) {
+							//Set the var to false to let the program know
+							fullnameOK = false;
+							/* Display the error to the user */
+							console.error(err);
+							console.error('There has been an error updating your fullname in the DB. Please, try it again.');
+						}
+					} else if (!(fullname.length > 0 && fullname.match(fullnamePattern))) {
+						/* In case the user doesn't introduce nothing in the fullname field (or the data introduced is not valid) it will let him and the program know the fullname hasn't been updated. */
+						fullnameOK = false;
+						console.log(`The fullname doesn't contain anything or the data inside the input has invalid characters.`);
+					}
+					/* If the user introduced both passwords and both match the REGEX: */
+					if (newPassword.length > 0 && newPassword.match(fullPasswordPattern) && currentPassword.length > 0 && currentPassword.match(fullPasswordPattern)) {
+						try {
+							//Compare the password introduced by the user to the one in the DB.
+							const passwordComparison = await helpers.comparePassword(currentPassword, user.password);
+							/* If the comparison returns a true value: */
+							if (passwordComparison) {
+								/* Encrypt the new password, introduce it in the DB and set the var to true to let the program know the password has been updated. */
+								const newHashedPassword = await helpers.encryptPassword(newPassword);
+								const updatePasswordQuery = await pool.query(`UPDATE users SET password='${newHashedPassword}' WHERE id='${userID}'`);
+								req.user.password = newHashedPassword;
+								passwordOK = true;
+							} else {
+								//If the password comparison returns a false value it will throw a Error so we can't update the password.
+								throw new Error('The "current password" you introduced is not the same as the one stored in the DB.');
+							}
+						} catch (err) {
+							/* In case there is an error during the comparison/encryption or update of the password it will show a general error. */
+							passwordOK = false;
+							console.error(err);
+							console.error('There has been an error updating your password in the DB. Please, try it again.');
+						}
+					} else if (!(newPassword.length > 0 && newPassword.match(fullPasswordPattern) && currentPassword.length > 0 && currentPassword.match(fullPasswordPattern))) {
+						/* In case the user doesn't introduce nothing in the passwords fields (or the data introduced is not valid) it will let him and the program know the password hasn't been updated. */
+						passwordOK = false;
+						console.log(`The password doesn't contain anything or the data inside the input has invalid characters.`);
+					}
+				}
+				if (fullnameOK && passwordOK) {
+					return done(null, req.user, req.flash('bothUpdated', 'Both fullname and password has been updated.'));
+				} else if (fullnameOK) {
+					return done(null, req.user, req.flash('onlyFullnameUpdated', 'Only your fullname has been updated.'));
+				} else if (passwordOK) {
+					return done(null, req.user, req.flash('onlyPasswordUpdated', 'Only your password has been updated.'));
+				} else {
+					return done(null, false, req.flash('nothingUpdated', 'We could not update anything in the DB. Check both inputs.'));
+				}
+			} else {
+				return done(null, false, req.flash('moreThanOneUser', 'There are more than 2 users with that ID. That is not supposed to happen. Please contact any administrator so he can delete one of the accounts.'));
 			}
 		},
 	),

@@ -63,9 +63,6 @@ body {
 				width: 100%;
 				display: block;
 				text-align: center;
-				// flex-flow: column wrap;
-				// justify-content: center;
-				// align-items: center;
 				font-size: 1rem;
 				text-transform: none;
 				margin-bottom: 1rem;
@@ -114,7 +111,6 @@ body {
 				@extend .form__submitButton--left;
 				background:$redButton;
 				color: rgba(255, 255, 255, 0.8);
-				//text-shadow: 1px 1px 4px $lightGreyShadow;
 				margin-top: 0.5rem;
 				margin-left: 1rem;
 				margin-right: 1rem;

@@ -54,5 +54,15 @@ router.get('/profile/edit', userLoggedIn, (req, res) => {
 	}
 });
 
+/* Receive the form in POST and update the data in the DB. After that it redirects to /profile */
+router.post('/profile/edit', userLoggedIn, (req, res, next) => {
+	passport.authenticate('local.profileEdit', {
+		successRedirect: '/profile',
+		failureRedirect: '/profile/edit',
+		successFlash: true,
+		failureFlash: true,
+	})(req, res, next);
+});
+
 //Export router module.
 module.exports = router;

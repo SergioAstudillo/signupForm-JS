@@ -91,6 +91,56 @@
 		});
 		</script>
 	{{/if}}
+	
+	{{#if bothUpdated}}
+		<script>
+		Swal.fire({
+			icon: 'success',
+			title: `You successfully updated your profile.`,
+			text: `{{bothUpdated}}`,
+		});
+		</script>
+	{{/if}}
+
+	{{#if onlyFullnameUpdated}}
+		<script>
+		Swal.fire({
+			icon: 'success',
+			title: `You successfully updated some data in your profile.`,
+			text: `{{onlyFullnameUpdated}}`,
+		});
+		</script>
+	{{/if}}
+
+	{{#if onlyPasswordUpdated}}
+		<script>
+		Swal.fire({
+			icon: 'success',
+			title: `You successfully updated some data in your profile.`,
+			text: `{{onlyPasswordUpdated}}`,
+		});
+		</script>
+	{{/if}}	
+
+	{{#if moreThanOneUser}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: `We encountered an error.`,
+			text: `{{moreThanOneUser}}`,
+		});
+		</script>
+	{{/if}}
+	
+	{{#if nothingUpdated}}
+		<script>
+		Swal.fire({
+			icon: 'error',
+			title: `Nothing has been updated.`,
+			text: `{{nothingUpdated}}`,
+		});
+		</script>
+	{{/if}}
 
 </body>
 </html>

@@ -3,24 +3,25 @@ const totalLength = /.{8,30}/g;
 const minimumNumbers = /[0-9]/g;
 const minimunLowerANDUpperCaseCharacters = /(?=.*[a-z])(?=.*[A-Z])/g;
 const minimumSymbols = /(?=.*?[#?!@$€%&*\-+.,])/g;
+//Pattern creation. Minimum 8 characters, 1 UpperCase, 1 lowercase, 1 number and 1 of the indicated symbols.
+const fullPasswordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.{1,}?[0-9])(?=.*?[#?!@$€%&*\-+.,]).{8,30}$/g;
 
 // Button for sending the data.
 const submitButton = document.querySelector('.form__submitButton--middle');
 
+/* Selectors for both password inputs */
+const dynamicValidation = document.querySelector('#inputCurrentPassword');
+const dynamicValidationNewPassword = document.querySelector('#inputNewPassword');
+
 /* Original regex separated. */
 /* Function for checking the final passwords in both password inputs. */
 function checkPassword() {
-	//Pattern creation. Minimum 8 characters, 1 UpperCase, 1 lowercase, 1 number and 1 of the indicated symbols.
-	const fullPasswordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.{1,}?[0-9])(?=.*?[#?!@$€%&*\-+.,]).{8,30}$/g;
-
 	//Store the password in a private const and remove the possible whitespaces.
 	const superSecretPassword = document.querySelector('#inputCurrentPassword').value.replace(/\s/g, '');
 	const superSecretNewPassword = document.querySelector('#inputNewPassword').value.replace(/\s/g, '');
 	if (validateBothPasswords(superSecretPassword, superSecretNewPassword, fullPasswordPattern)) {
 		return true;
 	} else {
-		/* If the user entered nothing at the password input the web doesn't ask him to enter data since he doesn't want to change his password. */
-		if (superSecretPassword === '' || superSecretNewPassword === '') return false;
 		return false;
 	}
 }
@@ -30,16 +31,11 @@ function validateBothPasswords(superSecretPassword, superSecretNewPassword, full
 	if (superSecretPassword.match(fullPasswordPattern) && superSecretNewPassword.match(fullPasswordPattern)) {
 		return true;
 	} else {
-		if (superSecretNewPassword.match(fullPasswordPattern) && !superSecretPassword.match(fullPasswordPattern)) {
-			console.error(`One (or both) password(s) doesn't meet all the validations needed to modify the password(s).`);
-		}
+		console.clear();
+		console.error(`One (or both) password(s) doesn't meet all the validations needed to modify the password(s).`);
 		return false;
 	}
 }
-
-/* Selectors for both password inputs */
-const dynamicValidation = document.querySelector('#inputCurrentPassword');
-const dynamicValidationNewPassword = document.querySelector('#inputNewPassword');
 
 /* Password dynamic validation. Explanation of each functionality inside: */
 function validatePassword() {
@@ -79,7 +75,7 @@ function validatePassword() {
 	deleteWhitespacesPasswords();
 
 	/* Highlight (OR unhighlight) the FIFTH button if the password is valid in both inputs (OR not). */
-	if (checkPassword()) {
+	if (dynamicValidation.value.replace(/\s/g, '').match(fullPasswordPattern) && dynamicValidationNewPassword.value.replace(/\s/g, '').match(fullPasswordPattern)) {
 		fifthValidationButton.classList.add('form__validation--greenCircle--fifth');
 	} else {
 		fifthValidationButton.classList.remove('form__validation--greenCircle--fifth');
@@ -111,12 +107,6 @@ function checkFullname() {
 		userFullname.value = correctedFullname;
 		return true;
 	} else {
-		/* If the user entered nothing at the fullname input the web doesn't ask him to enter data since he doesn't want to change his fullname. */
-		if (userFullname.value === '') {
-			return false;
-		}
-		/* If the fullname is not valid this clears the input and tells the user that it isn't valid. */
-		userFullname.value = '';
 		userFullname.focus();
 		console.error(`The fullname you introduced is invalid.`);
 		return false;
@@ -125,15 +115,21 @@ function checkFullname() {
 
 /* Function called every time the user press the 'CHANGE PROFILE INFORMATION' button. */
 function submitData() {
-	if (checkPassword()) {
+	if (checkFullname() || checkPassword()) {
+		if (!checkFullname()) {
+			if (document.querySelector('#inputFullname').value === '') {
+				document.mainForm.fullnameInput.value = '1';
+			}
+		}
+		if (!checkPassword()) {
+			if (dynamicValidation.value === '' && dynamicValidationNewPassword.value === '') {
+				document.mainForm.currentPasswordInput.value = '1';
+				document.mainForm.newPasswordInput.value = '1';
+			}
+		}
 		submitButton.setAttribute('type', 'submit');
-		return true;
-	} else if (checkFullname()) {
-		submitButton.setAttribute('type', 'submit');
-		return true;
 	} else {
 		submitButton.setAttribute('type', 'button');
-		return false;
 	}
 }
 

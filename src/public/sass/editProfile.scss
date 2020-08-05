@@ -29,7 +29,6 @@ body {
 		border: 0.25rem solid $labelColor;
 		width: 65vw;
 		margin: 17.5vh 17.5vw 0 17.5vw;
-		//TODO: hacer un media query para que en determinados dispositivos se añada un margin-bottom de 25vh.
 		display: flex;
 		flex-flow: column nowrap;
 		border-radius: 1.835rem;
@@ -65,9 +64,6 @@ body {
 				width: 100%;
 				display: block;
 				text-align: center;
-				// flex-flow: column wrap;
-				// justify-content: center;
-				// align-items: center;
 				font-size: 1rem;
 				text-transform: none;
 				margin-bottom: 1rem;
@@ -116,11 +112,9 @@ body {
 				@extend .form__submitButton--left;
 				background:$redButton;
 				color: rgba(255, 255, 255, 0.8);
-				//text-shadow: 1px 1px 4px $lightGreyShadow;
 				margin-top: 0.5rem;
 				margin-left: 1rem;
 				margin-right: 1rem;
-				//Cambiar a hide una vez pulsado.
 			}
 
 			.form__submitButton--middle{
@@ -154,7 +148,6 @@ body {
 		.form__input--container{
 			margin: 0rem 1.35rem 1rem 1rem;
 			display: none;
-			//display:block;
 			position: relative;
 
 			.form__input--fullnameContainer{
@@ -232,10 +225,8 @@ body {
 		
 		.form__validation--wrapper{
 			display: none;
-			//display: flex;
 			flex-flow: column nowrap;
 			margin: 0 25% 0 25%;
-			//TODO: media query para que a partir de ciertos píxeles de ancho se cambie el margen.
 			.form__validation--first{
 				margin-top: 1rem;
 				margin-bottom: 0;
