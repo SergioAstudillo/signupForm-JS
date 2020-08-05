@@ -99,7 +99,13 @@ function checkFullname() {
 	const fullnamePattern = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/i;
 
 	const userFullname = document.querySelector('#inputFullname');
-	const correctedFullname = userFullname.value.toLowerCase();
+	const correctedFullname = capitalizeInitials(userFullname.value.toLowerCase());
+	/* Capitalize the initials of each word. */
+	function capitalizeInitials(str) {
+		return str.replace(/\w\S*/g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+	}
 
 	/* If the fullname input match the regex it returns true. */
 	if (correctedFullname.match(fullnamePattern)) {

@@ -4,8 +4,7 @@
   "description": "SignUp AND Login in Node.JS",
   "main": "app.js",
   "scripts": {
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "node ./src/app.js"
   },
   "repository": {
     "type": "git",

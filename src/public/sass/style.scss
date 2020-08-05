@@ -167,55 +167,73 @@ body {
         display: flex;
         align-self: center;
         justify-content: center;
+        flex-flow: row wrap;
         width: 100%;
-        .form__submitButton{
-            display: flex;
-            justify-content: center;
+        .form__submitButton--left{
+			display: flex;
+			justify-content: center;
             align-items: center;
-            flex-flow: row wrap;
-            height: 3.125rem;
-            width: 12.5rem;
-            margin-bottom: 1rem;
-            border-radius: 1.5rem;
-            border: 0.188rem solid $labelColor;
-            border-style: solid;
-            transition: box-shadow cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s;
-            text-transform: uppercase;
-            color: $labelColor;
+			height: 3.125rem;
+			width: 15rem;
+			margin-bottom: 1rem;
+			border-radius: 1.5rem;
+			border: 0.188rem solid $labelColor;
+			border-style: solid;
+			transition: box-shadow cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s;
+			text-transform: uppercase;
+			margin-left: 1rem;
+			margin-right: 1rem;
+			margin-top: 0.5rem;
+			color: $labelColor;
+			background: $inputColor;
             text-shadow: 1px 1px 4px $lightGreyShadow;
+            @media (max-width: 325px) {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+			}
             &:hover, &:focus{
                 cursor: pointer;
                 box-shadow: 0 0 1rem $hoverShadow;
                 outline: none;
-            }
+            }		
         }
-    }
 
-    /* Additional classes to add with JS for dynamic validation. */
-    .form__validation--greenCircle--first{
-        @extend .form__validation--first;
-        @include circleBefore(inline-flex, $validatedButton);
-    }
-
-    .form__validation--greenCircle--second{
-        @extend .form__validation--second;
-        @include circleBefore(inline-flex, $validatedButton);
-    }
-
-    .form__validation--greenCircle--third{
-        @extend .form__validation--third;
-        @include circleBefore(inline-flex, $validatedButton);
-    }
-
-    .form__validation--greenCircle--fourth{
-        @extend .form__validation--fourth;
-        @include circleBefore(inline-flex, $validatedButton);
-    }
+		.form__submitButton--right{
+            @extend .form__submitButton--left;
+			margin-top: 0.5rem;
+			margin-left: 1rem;
+            margin-right: 1rem;
+            @media (max-width: 325px) {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+			}
+        }
     
-    //Space between the button and the input when the login error has display:none;
-    .form__whitespace{
-        margin-top: 0.75rem;
-        margin-bottom: 0;
     }
-    
-}
+        /* Additional classes to add with JS for dynamic validation. */
+        .form__validation--greenCircle--first{
+            @extend .form__validation--first;
+            @include circleBefore(inline-flex, $validatedButton);
+        }
+
+        .form__validation--greenCircle--second{
+            @extend .form__validation--second;
+            @include circleBefore(inline-flex, $validatedButton);
+        }
+
+        .form__validation--greenCircle--third{
+            @extend .form__validation--third;
+            @include circleBefore(inline-flex, $validatedButton);
+        }
+
+        .form__validation--greenCircle--fourth{
+            @extend .form__validation--fourth;
+            @include circleBefore(inline-flex, $validatedButton);
+        }
+        
+        //Space between the button and the input when the login error has display:none;
+        .form__whitespace{
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+        }
+}    

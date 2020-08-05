@@ -1,41 +1,76 @@
-<center><u><h1 style="font-family: Montserrat; font-size:4rem; font-weight:700;">SignUp + LogIn FORM</h1></u></center>
+<u><h1>SignUp + LogIn FORM</h1></u>
 
-<i><p><h4 style="font-family: Montserrat; font-size:1.5rem; font-weight:500;">WIP (Work In Progress)</h4></p></i>
+This is my _first_ **FULLSTACK** project 💻
 
-<p style="font-family: Montserrat; font-size:1.2rem; font-weight:400;">This is my first <i>FULLSTACK</i> project. <br>It is a simple signup + login functional form for the user.</p>
+<u><h3>Description:</h3></u>
 
-<ul style="padding-left:0;">
-<p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Technologies used:</u></p>
+It's a signup and login web (with password and email **validation** in both **frontend and backend**):
 
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Handlebars (HTML)</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">SaSS (CSS3)</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">JS (ES6)</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Node.JS</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL (SQL)</li>
-</ul>
+* The web **automatically validates** the password in a dynamic way in the /signup page and in the /profile/edit page. If the validation isn't completed the user can't send the data.
+<center><em><u>Before validation:</u></em></center>
 
-<ul style="padding-left:0;">
-<p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Libraries/frameworks:</u></p>
+![Photo can't be loaded.](https://imgur.com/W4cIEhC.jpeg)
 
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">FontAwesome for the icons.</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">SweetAlerts for the alerts.</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Normalize for adapting the webpage to all browsers.</li>
-</ul>
+<center><em><u><b>After validation:</b></u></em></center>
 
-<ul style="padding-left:0;">
-<p style="font-family: Montserrat; font-size:1.2rem; font-weight:700;"><u>Node.JS modules used for development:</u></p>
+![Photo can't be loaded.](https://imgur.com/Rng7VxJ.jpeg)
 
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express.</li>
-    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-mysql-session</li>
-    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-session</li>
-    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-validator</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Express-handlebars</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Morgan</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Nodemon</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">MySQL</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Passport</li>
-    <li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Passport-local</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">TimeAgo.js</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Dot.env</li>
-<li style="margin-left:1rem;font-family: Montserrat; font-size:1rem; font-weight:400;">Bcrypt.js</li>
-</ul>
+* There are **flashes** (SweetAlert2 personalized alerts) for every or almost every possibility (_the user introduced an already used email in the signup, he couldn't update his password, etc._).
+  
+* The **user can see all his data** once logged in and **edit** the **fullname or password** if he wants to (**in a dynamic way too**).
+
+* The **password is encrypted** in the DB so in case anyone gains access to it he won't know the _"real (plaintext)"_ password (**salt of 12**).
+  
+**_Notes:_**
+* The web is fully responsive.
+* There are 2 functional icons in every form:
+    * The clear button (it only shows if you focus on the email.)
+    * The show/hide dynamic icon to show or hide the passwords you're typing.
+* The project has more small details that you can check for yourself.
+* Feel free to contact me on Twitter if you want to talk about this project or something else: [My twitter.](https://twitter.com/SergioAstGonz)
+
+<u><h3>Things to do before trying out the project:</h3></u>
+
+1. **Install MySQL** in your computer.
+2. Use the command `npm i` to install all the necessary node modules.
+3. **Execute** the script located in **/database/db.sql**
+4. Create a **.env** file with the following **variables**:
+      * **DB_HOST:** the IP or hostname of the computer you're going to use for testing the project.
+      * **DB_USER:** the username you use to access MySQL.
+      * **DB_PASSWORD:** the password you use to access MySQL (You can leave it blank if you don't use any. But it has no be created.)
+      * **DB_NAME:** the name of the DB where you're going to store the users (**_If you used the script this will be "mainDatabase"_**).
+      * **SECRET:** the secret keyword for the session.
+      * **PORT:** the port you're gonna use for testing the app. (I recommend **3000 || 5000 || 8080**)
+
+Once you did all this you can **start using the project** with no problems.
+
+<u><h3>Technologies used:</h3></u>
+
+* **Handlebars** (_HTML_)
+* **SaSS/ScSS** (_CSS3_)
+* **JS** (_with ES6 features_)
+* **Node.JS**
+* **MySQL** (_SQL_)
+
+<u><h3>Libraries/frameworks:</h3></u>
+
+* **FontAwesome** for the icons.
+* **SweetAlert2** for the alerts.
+* **NormalizeCSS** for adapting the webpage to all browsers.
+
+<u><h3>Node.JS modules used for development:</h3></u>
+
+* Express.
+* Express-mysql-session
+* Express-session
+* Express-validator
+* Express-handlebars
+* Connect Flash
+* Morgan
+* Nodemon (_only in development_)
+* MySQL
+* Passport
+* Passport-local
+* TimeAgo.js
+* Dot.env
+* Bcrypt.js

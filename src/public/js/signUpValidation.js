@@ -8,7 +8,7 @@ const minimunLowerANDUpperCaseCharacters = /(?=.*[a-z])(?=.*[A-Z])/g;
 const minimumSymbols = /(?=.*?[#?!@$€%&*\-+.,])/g;
 
 /* Global variables */
-const submitButton = document.querySelector('.form__submitButton');
+const submitButton = document.querySelector('.form__submitButton--right');
 
 /* Original regex separated. */
 function checkPassword() {

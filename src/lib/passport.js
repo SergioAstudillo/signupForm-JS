@@ -7,6 +7,7 @@ const time = require('./timeago');
 /* REGEX for validations. */
 const fullPasswordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.{1,}?[0-9])(?=.*?[#?!@$€%&*\-+.,]).{8,30}$/g;
 const fullnamePattern = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/i;
+const fullEmailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 /* Login validation. */
 passport.use(
@@ -68,7 +69,7 @@ passport.use(
 						It DOESN'T store anything in the DB */
 						return done(null, false, req.flash('usedEmail', 'The email you introduced is already stored in our DB. Please, use a NEW email.'));
 					}
-					if (password.match(fullPasswordPattern)) {
+					if (password.match(fullPasswordPattern) && email.match(fullEmailPattern)) {
 						const result = await pool.query('INSERT INTO users set ?', [newUser]);
 						newUser.id = result.insertId;
 						return done(null, newUser, req.flash('successSignup', newUser.email));
