@@ -25,7 +25,7 @@ It's a signup and login web (with password and email **validation** in both **fr
 **_Notes:_**
 * The web is fully responsive.
 * There are 2 functional icons in every form:
-    * The clear button (it only shows if you focus on the email.)
+    * The clear button (it only shows if you focus on the email or fullname inputs.)
     * The show/hide dynamic icon to show or hide the passwords you're typing.
 * The project has more small details that you can check for yourself.
 * Feel free to contact me on Twitter if you want to talk about this project or something else: [My twitter.](https://twitter.com/SergioAstGonz)
@@ -38,10 +38,10 @@ It's a signup and login web (with password and email **validation** in both **fr
 4. Create a **.env** file with the following **variables**:
       * **DB_HOST:** the IP or hostname of the computer you're going to use for testing the project.
       * **DB_USER:** the username you use to access MySQL.
-      * **DB_PASSWORD:** the password you use to access MySQL (You can leave it blank if you don't use any. But it has no be created.)
+      * **DB_PASSWORD:** the password you use to access MySQL (You can leave it blank if you don't use any. But it has to be created.)
       * **DB_NAME:** the name of the DB where you're going to store the users (**_If you used the script this will be "mainDatabase"_**).
       * **SECRET:** the secret keyword for the session.
-      * **PORT:** the port you're gonna use for testing the app. (I recommend **3000 || 5000 || 8080**)
+      * **PORT:** the port you're going to use for testing the app. (I recommend **3000 || 5000 || 8080**)
 
 Once you did all this you can **start using the project** with no problems.
 
