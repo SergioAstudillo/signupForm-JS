@@ -9,7 +9,7 @@ CREATE TABLE users(
     id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(50) NOT NULL,
     fullname VARCHAR(50) NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(200) NOT NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp
 );
 
