@@ -43,7 +43,7 @@ It's a signup and login web (with password and email **validation** in both **fr
       * **SECRET:** the secret keyword for the session.
       * **PORT:** the port you're going to use for testing the app. (I recommend **3000 || 5000 || 8080**)
 
-Once you did all this you can **start using the project** with no problems.
+Once you do all this you can **start using the project** with no problems. Use `npm start` to **start the server**.
 
 ### Technologies used:
 
